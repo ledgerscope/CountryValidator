@@ -41,6 +41,8 @@ namespace CountryValidation.Tests
         [Theory]
         [InlineData("980780684", true)]
         [InlineData("802311781", false)]
+        [InlineData("X1375980M", false)]
+        [InlineData("6640211", false)]
         public void TestCorrectVatCode(string code, bool isValid)
         {
             Assert.Equal(isValid, _ukValidator.ValidateVAT(code).IsValid);

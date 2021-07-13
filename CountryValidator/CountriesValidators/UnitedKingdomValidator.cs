@@ -108,6 +108,11 @@ namespace CountryValidation.Countries
                 return ValidationResult.Invalid("Invalid length");
             }
 
+            if (Regex.IsMatch(vatId, "[a-zA-Z]"))
+            {
+                return ValidationResult.Invalid("Invalid format. Cannot contain letters (apart from GB)");
+            }
+
             var no = long.Parse(vatId.Substring(0, 7));
 
             for (int i = 0; i < 7; i++)
