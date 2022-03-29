@@ -83,8 +83,14 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateVAT(string vatId)
         {
             vatId = vatId?.RemoveSpecialCharacthers();
-            vatId = vatId.Replace("gb", string.Empty).Replace("GB", string.Empty);
-            var multipliers = new int[] { 8, 7, 6, 5, 4, 3, 2 };
+
+            if (vatId.StartsWith("GB", StringComparison.OrdinalIgnoreCase))
+                vatId = vatId.Substring(2);
+
+            if (vatId.Length < 4)
+            {
+                return ValidationResult.Invalid("Invalid length");
+            }
 
             if (vatId.Substring(0, 2) == "GD")
             {
@@ -114,6 +120,8 @@ namespace CountryValidation.Countries
             }
 
             var no = long.Parse(vatId.Substring(0, 7));
+
+            var multipliers = new int[] { 8, 7, 6, 5, 4, 3, 2 };
 
             for (int i = 0; i < 7; i++)
             {
