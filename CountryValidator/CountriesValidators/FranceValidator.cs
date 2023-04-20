@@ -134,17 +134,17 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateVAT(string number)
         {
             number = number.RemoveSpecialCharacthers().ToUpper().Replace("FR", string.Empty);
-            if (_alphabet.IndexOf(number[0]) == -1)
+            if (number.Length != 11)
+            {
+                return ValidationResult.InvalidLength();
+            }
+            else if (_alphabet.IndexOf(number[0]) == -1)
             {
                 return ValidationResult.Invalid("Invalid format");
             }
             else if (!number.Substring(2).All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("A1234567890");
-            }
-            else if (number.Length != 11)
-            {
-                return ValidationResult.InvalidLength();
             }
             else if (number.Substring(2, 3) != "000")
             {

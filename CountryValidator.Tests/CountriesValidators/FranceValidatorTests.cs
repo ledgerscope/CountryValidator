@@ -42,6 +42,7 @@ namespace CountryValidation.Tests
         }
 
         [Theory]
+        [InlineData("FR", false)]
         [InlineData("Fr 40 303 265 045", true)]
         [InlineData("23334175221", true)]
         [InlineData("K7399859412", true)]
