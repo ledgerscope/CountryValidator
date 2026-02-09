@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Country Validator is a library that can be used to validate VAT/TVA codes, social security numbers and TINs (Tax Identification Numbers). All countries from European Union are supported and United States.</Description>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net48;</TargetFrameworks>
+    <TargetFramework>net10.0</TargetFramework>
     <Authors>Anghel Valentin</Authors>
     <RepositoryType>git</RepositoryType>
     <PackageTags>VAT, SSN, Id, Social Security Number, TIN, Countries Validator, Validator</PackageTags>
