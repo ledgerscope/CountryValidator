@@ -41,7 +41,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
 
             var checkDigit = GetCheckDigit(id);
             return (int)char.GetNumericValue(id[12]) == checkDigit ? ValidationResult.Success() : ValidationResult.InvalidChecksum();
@@ -54,7 +54,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers().ToUpper();
+            id = id.RemoveSpecialCharacters().ToUpper();
             if (id.Length != 12)
             {
                 return ValidationResult.InvalidLength("12 characters");
@@ -93,9 +93,9 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string value)
         {
-            value = value.RemoveSpecialCharacthers();
+            value = value.RemoveSpecialCharacters();
             value = value.Replace("CH", string.Empty).Replace("ch", string.Empty);
-            value = value.RemoveSpecialCharacthers();
+            value = value.RemoveSpecialCharacters();
 
             if (!Regex.IsMatch(value, "^E?[0-9]{9}(MWST|IVA|TVA)?$"))
             {
@@ -128,7 +128,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN");

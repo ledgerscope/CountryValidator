@@ -42,7 +42,7 @@ namespace CountryValidation.Countries
                 throw new ArgumentNullException(nameof(vatId));
             }
 
-            vatId = vatId.RemoveSpecialCharacthers().ToUpper().Replace("HR", string.Empty);
+            vatId = vatId.RemoveSpecialCharacters().ToUpper().Replace("HR", string.Empty);
             if (!Regex.IsMatch(vatId, @"^\d{11}$"))
             {
                 return ValidationResult.InvalidFormat("12345678901");
@@ -71,7 +71,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

@@ -8,7 +8,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateNationalIdentity(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
             if (!Regex.IsMatch(ssn, @"^\d{10}$"))
             {
                 return ValidationResult.InvalidFormat("1234567890");
@@ -18,7 +18,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             id = id?.Replace("cy", string.Empty)?.Replace("CY", string.Empty) ?? string.Empty;
 
             if (!Regex.IsMatch(id, @"^([0-59]\d{7}[A-Z])$"))
@@ -70,7 +70,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId.Replace("CY", string.Empty).Replace("cy", string.Empty);
 
             if (!Regex.IsMatch(vatId, @"^([0-59]\d{7}[A-Z])$"))
@@ -83,7 +83,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN");

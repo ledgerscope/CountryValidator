@@ -29,7 +29,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (!(number.Length == 8 || number.Length == 9))
             {
                 return ValidationResult.InvalidLength("8 or 9 characters");
@@ -74,7 +74,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             string[] validNumbers = new string[] { "10", "15", "17", "20" };
             if (number.Length != 11)
             {
@@ -102,7 +102,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

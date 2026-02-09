@@ -16,7 +16,7 @@ namespace CountryValidation.Countries
 
         private int CalculateChecksum(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             int inumber = int.Parse(number.Substring(10, 3));
             if (inumber <= 100)
             {
@@ -48,7 +48,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (id.Length != 14)
             {
                 return ValidationResult.InvalidLength("14 characters");
@@ -74,7 +74,7 @@ namespace CountryValidation.Countries
         }
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^1101$"))
             {
                 return ValidationResult.InvalidFormat("1101");

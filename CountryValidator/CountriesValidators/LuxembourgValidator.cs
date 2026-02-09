@@ -41,7 +41,7 @@ namespace CountryValidation.Countries
 
         public ValidationResult ValidateResident(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
             if (ssn?.Length != 11)
             {
                 return ValidationResult.InvalidLength("11 digits");
@@ -82,7 +82,7 @@ namespace CountryValidation.Countries
 
         public ValidationResult ValidateNaturalPersons(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
 
             if (ssn.Length != 13)
             {
@@ -152,7 +152,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId.Replace("lu", string.Empty).Replace("LU", string.Empty);
 
             if (!Regex.IsMatch(vatId, @"^\d{8}$"))
@@ -166,7 +166,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN");

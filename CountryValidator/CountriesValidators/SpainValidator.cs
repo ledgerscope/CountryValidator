@@ -18,7 +18,7 @@ namespace CountryValidation.Countries
 
         public ValidationResult ValidateSpanishID(string str)
         {
-            str = str.RemoveSpecialCharacthers();
+            str = str.RemoveSpecialCharacters();
             var type = SpainIdType(str);
 
             switch (type)
@@ -140,7 +140,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             var total = 0;
             var multipliers = new int[] { 2, 1, 2, 1, 2, 1, 2 };
 
@@ -204,7 +204,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
 
             ValidationResult result = ValidateEntity(vatId);
             if (result.IsValid)
@@ -238,7 +238,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

@@ -16,7 +16,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateNationalIdentity(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
             if (!Regex.IsMatch(ssn, @"^784[0-9]{4}[0-9]{7}[0-9]{1}$"))
             {
                 return ValidationResult.InvalidFormat("xxx-xxxx-xxxxxxx-x");

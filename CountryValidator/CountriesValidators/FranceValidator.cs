@@ -17,7 +17,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string number)
         {
-            number = number.RemoveSpecialCharacthers().ToUpper().Replace("FR", string.Empty);
+            number = number.RemoveSpecialCharacters().ToUpper().Replace("FR", string.Empty);
             if (!number.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("123456789");
@@ -36,7 +36,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string number)
         {
-            number = number.RemoveSpecialCharacthers().ToUpper().Replace("FR", string.Empty);
+            number = number.RemoveSpecialCharacters().ToUpper().Replace("FR", string.Empty);
             if (!number.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("1234567890123");
@@ -55,7 +55,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string value)
         {
-            value = value.RemoveSpecialCharacthers();
+            value = value.RemoveSpecialCharacters();
             if (value.Length != 15)
             {
                 return ValidationResult.InvalidLength("15 characters");
@@ -130,7 +130,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number.RemoveSpecialCharacthers().ToUpper().Replace("FR", string.Empty);
+            number = number.RemoveSpecialCharacters().ToUpper().Replace("FR", string.Empty);
             if (number.Length != 11)
             {
                 return ValidationResult.InvalidLength("11 characters");
@@ -180,7 +180,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

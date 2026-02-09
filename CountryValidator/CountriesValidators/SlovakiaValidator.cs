@@ -8,7 +8,7 @@ namespace CountryValidation.Countries
         public override Country CountryCode => Country.SK;
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
 
             if (ssn.Length < 9 || ssn.Length > 10)
             {
@@ -134,7 +134,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId.Replace("SK", string.Empty).Replace("sk", string.Empty);
             if (!Regex.IsMatch(vatId, @"^[1-9]\d[2346-9]\d{7}$"))
             {
@@ -149,7 +149,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNN NN");

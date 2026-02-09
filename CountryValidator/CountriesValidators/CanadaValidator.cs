@@ -14,7 +14,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string bn)
         {
-            bn = bn.RemoveSpecialCharacthers();
+            bn = bn.RemoveSpecialCharacters();
 
             var chardDigits = bn.ToCharArray();
             if (chardDigits.Length != 9)
@@ -52,7 +52,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string sin)
         {
-            sin = sin.RemoveSpecialCharacthers();
+            sin = sin.RemoveSpecialCharacters();
 
             var chardDigits = sin.ToCharArray();
             if (Regex.IsMatch(sin, @"^\d{9}$"))
@@ -93,7 +93,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^(?=[^DdFfIiOoQqUu\\d\\s])[A-Za-z]\\d(?=[^DdFfIiOoQqUu\\d\\s])[A-Za-z]\\s{0,1}\\d(?=[^DdFfIiOoQqUu\\d\\s])[A-Za-z]\\d$"))
             {
                 return ValidationResult.InvalidFormat("ANA NAN");

@@ -19,7 +19,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (number.Length != 14)
             {
                 return ValidationResult.InvalidLength("14 digits");

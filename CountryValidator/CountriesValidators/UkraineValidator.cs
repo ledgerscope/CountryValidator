@@ -13,7 +13,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (!Regex.IsMatch(id, @"^\d{12}$"))
             {
                 return ValidationResult.InvalidFormat("12 digits");
@@ -23,7 +23,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             if (!Regex.IsMatch(vatId, @"^\d{12}$"))
             {
                 return ValidationResult.InvalidFormat("123456789012");
@@ -34,7 +34,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

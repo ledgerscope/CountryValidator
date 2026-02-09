@@ -9,7 +9,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateEntity(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (!number.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("1234567890123");
@@ -33,7 +33,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
             if (!Regex.IsMatch(ssn, @"^\d{13}$"))
             {
                 return ValidationResult.InvalidFormat("1234567890123");
@@ -48,7 +48,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             if (!Regex.IsMatch(vatId, @"^\d{7}$"))
             {
                 return ValidationResult.InvalidFormat("1234567");
@@ -59,7 +59,7 @@ namespace CountryValidation.Countries
 
         private int CalculateChecksum(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             int[] weights = new int[] { 7, 3, 1, 7, 3, 1, 7, 3, 1, 7, 3, 1 };
 
             int sum = 0;
@@ -73,7 +73,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^[Mm][Dd][-]{0,1}\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("CCNNNN CC-NNNN");

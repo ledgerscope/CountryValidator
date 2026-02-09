@@ -49,7 +49,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string coe)
         {
-            coe = coe.RemoveSpecialCharacthers();
+            coe = coe.RemoveSpecialCharacters();
             coe = coe.Replace("SM", string.Empty).Replace("sm", string.Empty);
 
             if (coe.Length > 5 || coe.Length == 0)
@@ -69,7 +69,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^4789\\d$"))
             {
                 return ValidationResult.InvalidFormat("4789N");

@@ -13,7 +13,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
 
 
             if (!Regex.IsMatch(ssn, @"^\d{11}$"))
@@ -128,7 +128,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers().ToUpper().Replace("LT", string.Empty);
+            postalCode = postalCode.RemoveSpecialCharacters().ToUpper().Replace("LT", string.Empty);
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("LT-NNNNN");

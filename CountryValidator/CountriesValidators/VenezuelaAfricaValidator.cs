@@ -23,7 +23,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             id = id?.Replace("VE", string.Empty).Replace("ve", string.Empty) ?? string.Empty;
 
             if (id.Length != 10)
@@ -64,7 +64,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}(\\s[a-zA-Z]{1})?$"))
             {
                 return ValidationResult.InvalidFormat("NNNN or NNNN A");

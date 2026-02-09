@@ -27,7 +27,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string ruc)
         {
-            ruc = ruc.RemoveSpecialCharacthers();
+            ruc = ruc.RemoveSpecialCharacters();
 
             if (ruc.Length != 13)
             {
@@ -122,7 +122,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateCI(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (number.Length != 10)
             {
                 return ValidationResult.InvalidLength("10 characters");
@@ -150,7 +150,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{6}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNNN");

@@ -9,7 +9,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateNationalIdentity(string value)
         {
-            value = value.RemoveSpecialCharacthers();
+            value = value.RemoveSpecialCharacters();
 
             if (!Regex.IsMatch(value, @"^\d{13}$"))
             {
@@ -90,7 +90,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

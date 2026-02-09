@@ -17,7 +17,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             number = number.Replace("cr", string.Empty).Replace("CR", string.Empty);
             var class_three_types = new string[]{"002", "003", "004", "005", "006", "007", "008",
                      "009", "010", "011", "012", "013", "014", "101",
@@ -77,7 +77,7 @@ namespace CountryValidation.Countries
 
         public ValidationResult ValidateCPF(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
 
             if (!(number.Length == 10 || number.Length == 9))
             {
@@ -109,7 +109,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateResident(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
 
             if (!(number.Length == 11 || number.Length == 12))
             {
@@ -128,7 +128,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4,5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN OR NNNNN");

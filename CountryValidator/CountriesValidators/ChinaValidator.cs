@@ -52,7 +52,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (id.Length != 18&&id.Length!=15)
             {
                 return ValidationResult.InvalidLength("15 or 18 characters");
@@ -147,7 +147,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (id.Length != 18)
             {
                 return ValidationResult.InvalidLength("18 characters");
@@ -182,7 +182,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{6}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNNN");

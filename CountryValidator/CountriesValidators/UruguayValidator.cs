@@ -35,7 +35,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string rut)
         {
-            rut = rut.RemoveSpecialCharacthers();
+            rut = rut.RemoveSpecialCharacters();
             rut = rut.Replace("UY", string.Empty).Replace("uy", string.Empty);
 
             if (rut.Length != 12)
@@ -81,7 +81,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

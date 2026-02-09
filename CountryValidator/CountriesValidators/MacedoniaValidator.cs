@@ -9,7 +9,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateNationalIdentity(string value)
         {
-            value = value.RemoveSpecialCharacthers();
+            value = value.RemoveSpecialCharacters();
 
             if (!Regex.IsMatch(value, @"^\d{13}$"))
             {
@@ -86,7 +86,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId.Replace("MK", string.Empty).Replace("mk", string.Empty);
             if (!Regex.IsMatch(vatId, @"^\d{13}$"))
             {
@@ -97,7 +97,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN");

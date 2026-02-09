@@ -33,7 +33,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
             var match = Regex.Match(ssn, @"^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$");
 
             if (!match.Success)
@@ -56,7 +56,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string rfc)
         {
-            rfc = rfc.RemoveSpecialCharacthers();
+            rfc = rfc.RemoveSpecialCharacters();
 
             if (rfc.Length == 12) //# number assigned to company
             {
@@ -134,7 +134,7 @@ namespace CountryValidation.Countries
                 "PUTA", "PUTO", "QULO", "RATA", "RUIN"
             };
 
-            rfc = rfc.RemoveSpecialCharacthers();
+            rfc = rfc.RemoveSpecialCharacters();
 
 
 
@@ -179,7 +179,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

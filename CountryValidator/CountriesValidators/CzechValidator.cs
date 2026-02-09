@@ -9,7 +9,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id?.RemoveSpecialCharacthers() ?? string.Empty;
+            id = id?.RemoveSpecialCharacters() ?? string.Empty;
 
             if (id.Length < 9 || id.Length > 10)
             {
@@ -127,7 +127,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId.Replace("cz", string.Empty).Replace("CZ", string.Empty);
 
             int total = 0;

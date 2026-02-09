@@ -9,7 +9,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateEntity(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers() ?? string.Empty;
+            ssn = ssn.RemoveSpecialCharacters() ?? string.Empty;
             if (ssn.Length > 9)
             {
                 return ValidationResult.InvalidLength("9 digits or less");
@@ -37,7 +37,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers() ?? string.Empty;
+            ssn = ssn.RemoveSpecialCharacters() ?? string.Empty;
             if (ssn.Length != 9)
             {
                 return ValidationResult.InvalidLength("9 digits");
@@ -71,7 +71,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{7}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNNNN");

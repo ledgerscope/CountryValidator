@@ -33,7 +33,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             number = number.Replace("CO", string.Empty).Replace("co", string.Empty);
             if (!(8 <= number.Length && number.Length <= 16))
             {
@@ -73,7 +73,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{6}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNNN");

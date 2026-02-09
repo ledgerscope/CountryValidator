@@ -13,7 +13,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers().ToUpper();
+            id = id.RemoveSpecialCharacters().ToUpper();
 
             if (!Regex.IsMatch(id, @"^(\d{7})([A-Za-z]{1,2})$"))
             {
@@ -51,7 +51,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers().ToUpper();
+            ssn = ssn.RemoveSpecialCharacters().ToUpper();
 
             if (!Regex.IsMatch(ssn, @"^(\d{7})([A-Za-z]{1,2})$"))
             {
@@ -122,7 +122,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers().ToUpper();
+            postalCode = postalCode.RemoveSpecialCharacters().ToUpper();
             if (!Regex.IsMatch(postalCode, "^[\\dA-Z]{3}[\\dA-Z]{4}$"))
             {
                 return ValidationResult.InvalidFormat("WDD WDWD");

@@ -47,7 +47,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (!(number.All(char.IsDigit) || !int.TryParse(number, out var parsedNum) || parsedNum <= 0 ))
             {
                 return ValidationResult.InvalidFormat("All digits");
@@ -70,7 +70,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateOnderwijsnummer(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
 
             if (!number.All(char.IsDigit) || int.Parse(number) <= 0)
             {
@@ -109,7 +109,7 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateVAT(string vatId)
         {
 
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId?.Replace("nl", string.Empty).Replace("NL", string.Empty) ?? string.Empty;
 
             if (!Regex.IsMatch(vatId, @"^\d{9}B\d{2}$"))
@@ -133,7 +133,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers().ToUpper();
+            postalCode = postalCode.RemoveSpecialCharacters().ToUpper();
             if (!Regex.IsMatch(postalCode, "^\\d{4}[A-Z]{2}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN WW");

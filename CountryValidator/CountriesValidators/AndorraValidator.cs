@@ -26,7 +26,7 @@ namespace CountryValidation.Countries
         /// https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Andorra-TIN.pdf
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers().Replace("AD", string.Empty).Replace("ad", string.Empty);
+            id = id.RemoveSpecialCharacters().Replace("AD", string.Empty).Replace("ad", string.Empty);
 
             if (id.Length != 8)
             {
@@ -69,7 +69,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^[Aa][Dd]\\d{3}$"))
             {
                 return ValidationResult.InvalidFormat("CCNNN");

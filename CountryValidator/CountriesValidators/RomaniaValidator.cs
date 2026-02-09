@@ -19,7 +19,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
             int hashResult = 0;
             int[] cnp = new int[ssn.Length];
             int[] hashTable = new int[] { 2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9 };
@@ -86,7 +86,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId.Replace("RO", string.Empty).Replace("ro", string.Empty);
 
             if (!Regex.IsMatch(vatId, @"^[0-9]{2,10}$"))
@@ -119,7 +119,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{6}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNNN");

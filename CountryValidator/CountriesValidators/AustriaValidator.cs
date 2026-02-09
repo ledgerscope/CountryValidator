@@ -31,7 +31,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (!number.All(char.IsDigit) || number.StartsWith("0"))
             {
                 return ValidationResult.InvalidFormat("1234567890");
@@ -54,7 +54,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers().Replace("FN", string.Empty).Replace("fn", string.Empty);
+            id = id.RemoveSpecialCharacters().Replace("FN", string.Empty).Replace("fn", string.Empty);
 
 			const string regexPattern = @"^[0-9]+[a-zA-Z]$";
             if (!Regex.IsMatch(id, regexPattern))
@@ -89,7 +89,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (number.Length != 9)
             {
                 return ValidationResult.InvalidLength("9 digits");
@@ -113,7 +113,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId.Replace("AT", string.Empty).Replace("at", string.Empty);
 
             if (!Regex.IsMatch(vatId, @"^U\d{8}$"))
@@ -144,7 +144,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN");

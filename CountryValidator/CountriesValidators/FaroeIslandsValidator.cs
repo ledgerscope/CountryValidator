@@ -14,7 +14,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (!Regex.IsMatch(id, @"^\d{6}$"))
             {
                 return ValidationResult.InvalidFormat("123 456");
@@ -29,7 +29,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
             if (!Regex.IsMatch(ssn, @"^\d{9}$"))
             {
                 return ValidationResult.InvalidFormat("ddmmyyxxx");
@@ -52,7 +52,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{3}$"))
             {
                 return ValidationResult.InvalidFormat("NNN");

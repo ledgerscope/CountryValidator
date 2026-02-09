@@ -42,7 +42,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string num)
         {
-            num = num.RemoveSpecialCharacthers();
+            num = num.RemoveSpecialCharacters();
             int c = 0;
             int[] myArray = StringToReversedIntArray(num);
 
@@ -77,7 +77,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (id.Length != 10)
             {
                 return ValidationResult.InvalidLength("10 characters");
@@ -123,7 +123,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             if (!Regex.IsMatch(vatId, @"^\d{11}[CcVv]$"))
             {
                 return ValidationResult.InvalidFormat("12345678901C");
@@ -144,7 +144,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{6}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNNN or NNN NNN");

@@ -9,7 +9,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers().ToUpper();
+            id = id.RemoveSpecialCharacters().ToUpper();
             if (id.Length > 8 || id.Length < 4)
             {
                 return ValidationResult.InvalidLength("4 to 8 characters");
@@ -25,7 +25,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers().ToUpper();
+            id = id.RemoveSpecialCharacters().ToUpper();
             if (id.Length > 8 || id.Length < 4)
             {
                 return ValidationResult.InvalidLength("4 to 8 characters");
@@ -46,7 +46,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId?.Replace("mt", string.Empty)?.Replace("MT", string.Empty) ?? string.Empty;
             if (!Regex.IsMatch(vatId, @"^[1-9]\d{7}$"))
             {
@@ -63,7 +63,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^[A-Z]{3}\\d{2,4}$"))
             {
                 return ValidationResult.InvalidFormat("AAANNNN OR (AAA NNNN)");

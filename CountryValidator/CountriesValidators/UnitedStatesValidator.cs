@@ -50,7 +50,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateSSN(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
             Match match = Regex.Match(ssn, "^([0-9]{3})([0-9]{2})([0-9]{4})$");
 
             if (!match.Success)
@@ -81,7 +81,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
+            ssn = ssn.RemoveSpecialCharacters();
 
             if (ValidateSSN(ssn).IsValid)
             {

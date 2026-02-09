@@ -21,7 +21,7 @@ namespace CountryValidation
             return digits.Reverse();
         }
 
-        public static string RemoveSpecialCharacthers(this string ssn)
+        public static string RemoveSpecialCharacters(this string ssn)
         {
             StringBuilder sb = new StringBuilder();
 

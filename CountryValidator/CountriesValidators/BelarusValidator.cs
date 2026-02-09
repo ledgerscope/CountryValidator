@@ -16,7 +16,7 @@ namespace CountryValidation.Countries
         {
             id = id?.Replace("УНП", string.Empty).Replace("UNP", string.Empty) ?? string.Empty;
             id = id.Translit();
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (!Regex.IsMatch(id, "^[AaBbCcEeHhKkMmOoPpTt]{2}"))
             {
                 return ValidationResult.InvalidFormat("^[AaBbCcEeHhKkMmOoPpTt]{2}");
@@ -33,7 +33,7 @@ namespace CountryValidation.Countries
         {
             number = number?.Replace("УНП", string.Empty).Replace("UNP", string.Empty) ?? string.Empty;
             number = number.Translit();
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (!number.Substring(0, 2).All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("First two characters must be digits");
@@ -51,7 +51,7 @@ namespace CountryValidation.Countries
         {
             number = number?.Replace("УНП", string.Empty).Replace("UNP", string.Empty) ?? string.Empty;
             number = number.Translit();
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (!Regex.IsMatch(number, "^[AaBbCcEeHhKkMmOoPpTt]{2}"))
             {
                 return ValidationResult.InvalidFormat("^[AaBbCcEeHhKkMmOoPpTt]{2}");
@@ -105,7 +105,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{6}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNNN");

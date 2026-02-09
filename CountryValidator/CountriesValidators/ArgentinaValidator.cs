@@ -47,7 +47,7 @@ namespace CountryValidation.Countries
         private ValidationResult ValidateCuit(string cuit)
         {
 
-            cuit = cuit.RemoveSpecialCharacthers();
+            cuit = cuit.RemoveSpecialCharacters();
 
             if (!Regex.IsMatch(cuit, @"^\d{11}$"))
             {
@@ -71,7 +71,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string dni)
         {
-            dni = dni.RemoveSpecialCharacthers();
+            dni = dni.RemoveSpecialCharacters();
             if (string.IsNullOrWhiteSpace(dni) || dni.Length != 8 || !dni.All(Char.IsNumber))
             {
                 return ValidationResult.InvalidFormat("12345678");
@@ -111,7 +111,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateCBU(string cbu)
         {
-            cbu = cbu.RemoveSpecialCharacthers();
+            cbu = cbu.RemoveSpecialCharacters();
 
             if (!Regex.IsMatch(cbu, "^[0-9]{22}$"))
             {
@@ -147,7 +147,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}|[A-Za-z]\\d{4}[a-zA-Z]{3}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN OR ANNNNAAA");

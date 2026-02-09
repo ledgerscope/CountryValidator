@@ -16,7 +16,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string ird)
         {
-            ird = ird.RemoveSpecialCharacthers();
+            ird = ird.RemoveSpecialCharacters();
             ird = ird.Replace("NZ", string.Empty).Replace("nz", string.Empty);
             if (!(ird.Length != 8 || ird.Length != 9))
             {
@@ -91,7 +91,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN");

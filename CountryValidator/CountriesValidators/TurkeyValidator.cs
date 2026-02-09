@@ -92,7 +92,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId?.RemoveSpecialCharacthers().ToUpper().Replace("TR", string.Empty) ?? string.Empty;
+            vatId = vatId?.RemoveSpecialCharacters().ToUpper().Replace("TR", string.Empty) ?? string.Empty;
 
 
             if (!vatId.All(char.IsDigit))
@@ -112,7 +112,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

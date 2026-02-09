@@ -67,7 +67,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             id = id.Replace("PT", string.Empty).Replace("pt", string.Empty);
             int[] multipliers = { 9, 8, 7, 6, 5, 4, 3, 2 };
 
@@ -95,7 +95,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string code)
         {
-            code = code.RemoveSpecialCharacthers();
+            code = code.RemoveSpecialCharacters();
             code = code.Replace("PT", string.Empty).Replace("pt", string.Empty);
             int[] multipliers = { 9, 8, 7, 6, 5, 4, 3, 2 };
 
@@ -141,7 +141,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateBilhetedeIdentidade(string value)
         {
-            value = value.RemoveSpecialCharacthers();
+            value = value.RemoveSpecialCharacters();
 
             if (value?.Length != 9)
             {
@@ -164,7 +164,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateCartaoCidadao(string value)
         {
-            value = value.RemoveSpecialCharacthers();
+            value = value.RemoveSpecialCharacters();
             if (value?.Length != 12)
             {
                 return ValidationResult.InvalidLength("12 characters");
@@ -217,7 +217,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId.Replace("PT", string.Empty).Replace("pt", string.Empty);
             int[] multipliers = { 9, 8, 7, 6, 5, 4, 3, 2 };
 
@@ -245,7 +245,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{7}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN-NNN");

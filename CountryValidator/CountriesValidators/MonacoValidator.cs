@@ -19,7 +19,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             number = number.Replace("FR", string.Empty).Replace("fr", string.Empty).Replace("mc", string.Empty).Replace("MC", string.Empty);
 
 
@@ -33,7 +33,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^980\\d{2}$"))
             {
                 return ValidationResult.InvalidFormat("980NN");

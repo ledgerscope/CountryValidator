@@ -20,7 +20,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
 
             if (number.Length != 11)
             {
@@ -117,7 +117,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId?.RemoveSpecialCharacthers() ?? string.Empty;
+            vatId = vatId?.RemoveSpecialCharacters() ?? string.Empty;
             vatId = vatId?.Replace("NO", string.Empty).Replace("no", string.Empty)
                 .Replace("MVA", string.Empty).Replace("mva", string.Empty) ?? string.Empty;
 
@@ -150,7 +150,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN");

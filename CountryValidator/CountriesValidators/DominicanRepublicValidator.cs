@@ -108,7 +108,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (!id.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("12345678901");
@@ -136,7 +136,7 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateVAT(string rnc)
         {
 
-            rnc = rnc.RemoveSpecialCharacthers();
+            rnc = rnc.RemoveSpecialCharacters();
             if (!rnc.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("123456789");
@@ -164,7 +164,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateNCF(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             if (number.Length == 13)
             {
                 if (number[0] != 'E' || !number.Substring(1).All(char.IsDigit))
@@ -223,7 +223,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{5}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNN");

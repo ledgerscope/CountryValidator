@@ -10,7 +10,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateNationalIdentity(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
 
             if (!number.All(char.IsDigit))
             {
@@ -62,7 +62,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number.RemoveSpecialCharacthers();
+            number = number.RemoveSpecialCharacters();
             number = number?.Replace("ZA", string.Empty).Replace("za", string.Empty) ?? string.Empty;
 
             if (!Regex.IsMatch(number, @"^[01239]\d{9}$"))
@@ -76,7 +76,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{4}$"))
             {
                 return ValidationResult.InvalidFormat("NNNN");

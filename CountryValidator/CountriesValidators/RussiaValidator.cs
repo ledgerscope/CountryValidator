@@ -14,7 +14,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id.RemoveSpecialCharacters();
             if (!Regex.IsMatch(id, @"^\d{10}$") && !Regex.IsMatch(id, @"^\d{12}$"))
             {
                 return ValidationResult.InvalidFormat("123456789");
@@ -81,7 +81,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacthers();
+            vatId = vatId.RemoveSpecialCharacters();
             vatId = vatId?.Replace("RU", string.Empty).Replace("ru", string.Empty) ?? string.Empty;
             return ValidateIndividualTaxCode(vatId);
         }
@@ -94,7 +94,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string snils)
         {
-            snils = snils.RemoveSpecialCharacthers();
+            snils = snils.RemoveSpecialCharacters();
             if (!Regex.IsMatch(snils, @"^\d{11}$"))
             {
                 return ValidationResult.InvalidFormat("12345678901");
@@ -123,7 +123,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateBIK(string bik)
         {
-            bik = bik.RemoveSpecialCharacthers();
+            bik = bik.RemoveSpecialCharacters();
             if (!Regex.IsMatch(bik, @"^\d{9}$"))
             {
                 return ValidationResult.InvalidFormat("123456789");
@@ -145,7 +145,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateOGRN(string ogrn)
         {
-            ogrn = ogrn.RemoveSpecialCharacthers();
+            ogrn = ogrn.RemoveSpecialCharacters();
             if (!(Regex.IsMatch(ogrn, @"^\d{13}$")))
             {
                 return ValidationResult.InvalidFormat("123456789");
@@ -163,7 +163,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public ValidationResult ValidateOGRNIP(string ogrnip)
         {
-            ogrnip = ogrnip.RemoveSpecialCharacthers();
+            ogrnip = ogrnip.RemoveSpecialCharacters();
             if (!Regex.IsMatch(ogrnip, @"^\d{15}$"))
             {
                 return ValidationResult.InvalidFormat("123456789012345");
@@ -175,7 +175,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidatePostalCode(string postalCode)
         {
-            postalCode = postalCode.RemoveSpecialCharacthers();
+            postalCode = postalCode.RemoveSpecialCharacters();
             if (!Regex.IsMatch(postalCode, "^\\d{6}$"))
             {
                 return ValidationResult.InvalidFormat("NNNNNN");
