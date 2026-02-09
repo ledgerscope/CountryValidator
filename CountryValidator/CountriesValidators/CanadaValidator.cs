@@ -23,7 +23,7 @@ namespace CountryValidation.Countries
             }
             else if (chardDigits[0] != '8')
             {
-                return ValidationResult.InvalidFormat("The first characther must be 8");
+                return ValidationResult.InvalidFormat("The first character must be 8");
             }
 
             int[] digits = new int[chardDigits.Length];
