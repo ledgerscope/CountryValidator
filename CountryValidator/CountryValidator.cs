@@ -7,11 +7,37 @@ namespace CountryValidation
 {
     public class CountryValidator : ICountryValidator
     {
-        static readonly Dictionary<Country, IdValidationAbstract> _supportedCountries;
+        static readonly IReadOnlyDictionary<Country, IdValidationAbstract> _supportedCountries;
+
+        static readonly IReadOnlyDictionary<string, Country> _countriesByCode;
 
         static CountryValidator()
         {
             _supportedCountries = Load();
+            _countriesByCode = getCountriesByCode(_supportedCountries.Keys);
+        }
+
+        private static IReadOnlyDictionary<string, Country> getCountriesByCode(IEnumerable<Country> countries)
+        {
+            var dict = countries
+                .Where(c => c != Country.XX)
+                .ToDictionary(
+                    c => c.ToString().ToUpper(),
+                    c => c,
+                    StringComparer.OrdinalIgnoreCase
+                );
+            return dict;
+        }
+
+        public static bool TryGetCountryByCode(string code, out Country country)
+            => _countriesByCode.TryGetValue(code, out country);
+
+        public static bool IsCountrySupported(string countryCode)
+        {
+            if (TryGetCountryByCode(countryCode, out Country country))
+                return true;
+            else
+                return false;
         }
 
         public static bool IsCountrySupported(Country country)
@@ -19,15 +45,15 @@ namespace CountryValidation
             return _supportedCountries.ContainsKey(country);
         }
 
-        public static List<string> SupportedCountries
-        {
-            get
-            {
-                return _supportedCountries.Keys.Select(c => c.ToString()).ToList();
-            }
-        }
+        public static IReadOnlyList<Country> SupportedCountryVals
+            => _supportedCountries.Keys
+                .Where(c => c != Country.XX)
+                .ToList();
 
-        private static Dictionary<Country, IdValidationAbstract> Load()
+        public static List<string> SupportedCountries
+            => SupportedCountryVals.Select(c => c.ToString()).ToList();
+
+        private static IReadOnlyDictionary<Country, IdValidationAbstract> Load()
         {
             var assembly = typeof(CountryValidator).Assembly;
             var validatorTypes = assembly
@@ -139,6 +165,13 @@ namespace CountryValidation
             return ssnCountries;
         }
 
+        public ValidationResult ValidateIndividualTaxCode(string ssn, string countryCode)
+        {
+            if (TryGetCountryByCode(countryCode, out Country country))
+                return ValidateIndividualTaxCode(ssn, country);
+            else
+                return ValidationResult.CountryNotSupported(countryCode);
+        }
         public ValidationResult ValidateIndividualTaxCode(string ssn, Country country)
         {
             if (_supportedCountries.ContainsKey(country))
@@ -148,6 +181,13 @@ namespace CountryValidation
             return ValidationResult.CountryNotSupported(country);
         }
 
+        public ValidationResult ValidateVAT(string vat, string countryCode)
+        {
+            if (TryGetCountryByCode(countryCode,out Country country))
+                return ValidateVAT(vat, country);
+            else
+                return ValidationResult.CountryNotSupported(countryCode);
+        }
         public ValidationResult ValidateVAT(string vat, Country country)
         {
             if (_supportedCountries.ContainsKey(country))
@@ -157,6 +197,13 @@ namespace CountryValidation
             return ValidationResult.CountryNotSupported(country);
         }
 
+        public ValidationResult ValidateEntity(string vat, string countryCode)
+        {
+            if (TryGetCountryByCode(countryCode, out Country country))
+                return ValidateEntity(vat, country);
+            else
+                return ValidationResult.CountryNotSupported(countryCode);
+        }
         public ValidationResult ValidateEntity(string vat, Country country)
         {
             if (_supportedCountries.ContainsKey(country))
@@ -166,6 +213,13 @@ namespace CountryValidation
             return ValidationResult.CountryNotSupported(country);
         }
 
+        public ValidationResult ValidateNationalIdentityCode(string ssn, string countryCode)
+        {
+            if (TryGetCountryByCode(countryCode, out Country country))
+                return ValidateNationalIdentityCode(ssn, country);
+            else
+                return ValidationResult.CountryNotSupported(countryCode);
+        }
         public ValidationResult ValidateNationalIdentityCode(string ssn, Country country)
         {
             if (_supportedCountries.ContainsKey(country))
@@ -175,6 +229,13 @@ namespace CountryValidation
             return ValidationResult.CountryNotSupported(country);
         }
 
+        public ValidationResult ValidateZIPCode(string zip, string countryCode)
+        {
+            if (TryGetCountryByCode(countryCode, out Country country))
+                return ValidateZIPCode(zip, country);
+            else
+                return ValidationResult.CountryNotSupported(countryCode);
+        }
         public ValidationResult ValidateZIPCode(string zip, Country country)
         {
             if (_supportedCountries.ContainsKey(country))

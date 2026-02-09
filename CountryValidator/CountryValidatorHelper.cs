@@ -17,17 +17,28 @@ namespace CountryValidation
 		public static List<string> SupportedCountries
 			=> CountryValidator.SupportedCountries;
 
+		public static ValidationResult ValidateIndividualTaxCode(string ssn, string countryCode)
+			=> _instance.ValidateIndividualTaxCode(ssn, countryCode);
 		public static ValidationResult ValidateIndividualTaxCode(string ssn, Country country)
 			=> _instance.ValidateIndividualTaxCode(ssn, country);
+
+		public static ValidationResult ValidateVAT(string vat, string countryCode)
+			=> _instance.ValidateVAT(vat, countryCode);
 		public static ValidationResult ValidateVAT(string vat, Country country)
 			=> _instance.ValidateVAT(vat, country);
 
+		public static ValidationResult ValidateEntity(string vat, string countryCode)
+			=> _instance.ValidateEntity(vat, countryCode);
 		public static ValidationResult ValidateEntity(string vat, Country country)
 			=> _instance.ValidateEntity(vat, country);
 
+		public static ValidationResult ValidateNationalIdentityCode(string ssn, string countryCode)
+			=> _instance.ValidateNationalIdentityCode(ssn, countryCode);
 		public static ValidationResult ValidateNationalIdentityCode(string ssn, Country country)
 			=> _instance.ValidateNationalIdentityCode(ssn, country);
 
+		public static ValidationResult ValidateZIPCode(string zip, string countryCode)
+			=> _instance.ValidateZIPCode(zip, countryCode);
 		public static ValidationResult ValidateZIPCode(string zip, Country country)
 			=> _instance.ValidateZIPCode(zip, country);
 	}

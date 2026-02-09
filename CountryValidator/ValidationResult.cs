@@ -77,6 +77,11 @@ namespace CountryValidation
         {
             return new ValidationResult(ValidationStatus.CountryNotSupported, country.ToString());
         }
+
+        public static ValidationResult CountryNotSupported(string countryCode)
+        {
+            return new ValidationResult(ValidationStatus.CountryNotSupported, countryCode);
+        }
         #endregion
     }
 }
