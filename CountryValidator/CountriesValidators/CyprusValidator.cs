@@ -22,7 +22,7 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateEntity(string id)
         {
             id = id.RemoveSpecialCharacthers();
-            id = id?.Replace("cy", string.Empty)?.Replace("CY", string.Empty);
+            id = id?.Replace("cy", string.Empty)?.Replace("CY", string.Empty) ?? string.Empty;
 
             if (!Regex.IsMatch(id, @"^([0-59]\d{7}[A-Z])$"))
             {

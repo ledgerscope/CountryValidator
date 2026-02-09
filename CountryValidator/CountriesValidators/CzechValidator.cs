@@ -12,9 +12,9 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacthers();
+            id = id?.RemoveSpecialCharacthers() ?? string.Empty;
 
-            if (id?.Length < 9 || id?.Length > 10)
+            if (id.Length < 9 || id.Length > 10)
             {
                 return ValidationResult.Invalid("Invalid length. The code must have 9 or 10 digits");
             }

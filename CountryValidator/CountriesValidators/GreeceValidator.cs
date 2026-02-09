@@ -18,7 +18,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string number)
         {
-            number = number?.RemoveSpecialCharacthers();
+            number = number?.RemoveSpecialCharacthers() ?? string.Empty;
             if (!number.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("12345678901");

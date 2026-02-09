@@ -17,7 +17,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string id)
         {
-            id = id?.Replace("УНП", string.Empty).Replace("UNP", string.Empty);
+            id = id?.Replace("УНП", string.Empty).Replace("UNP", string.Empty) ?? string.Empty;
             id = id.Translit();
             id = id.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(id, "^[AaBbCcEeHhKkMmOoPpTt]{2}"))
@@ -34,7 +34,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateIndividualTaxCode(string number)
         {
-            number = number?.Replace("УНП", string.Empty).Replace("UNP", string.Empty);
+            number = number?.Replace("УНП", string.Empty).Replace("UNP", string.Empty) ?? string.Empty;
             number = number.Translit();
             number = number.RemoveSpecialCharacthers();
             if (!number.Substring(0, 2).All(char.IsDigit))
@@ -52,7 +52,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number?.Replace("УНП", string.Empty).Replace("UNP", string.Empty);
+            number = number?.Replace("УНП", string.Empty).Replace("UNP", string.Empty) ?? string.Empty;
             number = number.Translit();
             number = number.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(number, "^[AaBbCcEeHhKkMmOoPpTt]{2}"))

@@ -25,7 +25,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateNationalIdentity(string ssn)
         {
-            ssn = ssn?.RemoveSpecialCharacthers();
+            ssn = ssn?.RemoveSpecialCharacthers() ?? string.Empty;
             if (ValidateIndividualTaxCode(ssn).IsValid)
             {
                 return ValidationResult.Success();
@@ -49,7 +49,7 @@ namespace CountryValidation.Countries
 
         public ValidationResult ValidateNHS(string ssn)
         {
-            ssn = ssn?.RemoveSpecialCharacthers();
+            ssn = ssn?.RemoveSpecialCharacthers() ?? string.Empty;
             if (ssn.Length != 10 || !ssn.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("1234567890");
@@ -82,7 +82,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId?.RemoveSpecialCharacthers();
+            vatId = vatId?.RemoveSpecialCharacthers() ?? string.Empty;
 
             if (vatId.StartsWith("GB", StringComparison.OrdinalIgnoreCase))
                 vatId = vatId.Substring(2);

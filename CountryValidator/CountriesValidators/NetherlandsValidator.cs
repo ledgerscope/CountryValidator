@@ -113,7 +113,7 @@ namespace CountryValidation.Countries
         {
 
             vatId = vatId.RemoveSpecialCharacthers();
-            vatId = vatId?.Replace("nl", string.Empty).Replace("NL", string.Empty);
+            vatId = vatId?.Replace("nl", string.Empty).Replace("NL", string.Empty) ?? string.Empty;
 
             if (!Regex.IsMatch(vatId, @"^\d{9}B\d{2}$"))
             {
