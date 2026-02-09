@@ -1,4 +1,5 @@
 ﻿using CountryValidation.Countries;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,8 +27,23 @@ namespace CountryValidation
             }
         }
 
-
         private static Dictionary<Country, IdValidationAbstract> Load()
+        {
+            var assembly = typeof(CountryValidator).Assembly;
+            var validatorTypes = assembly
+                .GetTypes()
+                .Where(t => typeof(IdValidationAbstract).IsAssignableFrom(t)
+                    && !t.IsAbstract
+                    && t.GetConstructor(Type.EmptyTypes) != null); // needs public parameterless ctor
+
+            var dict = validatorTypes
+                .Select(t => (IdValidationAbstract)Activator.CreateInstance(t)!)
+                .ToDictionary(v => v.CountryCode, v => v);
+
+            return dict;
+        }
+
+        private static Dictionary<Country, IdValidationAbstract> Load_brittle ()
         {
             Dictionary<Country, IdValidationAbstract> ssnCountries = new Dictionary<Country, IdValidationAbstract>
             {
