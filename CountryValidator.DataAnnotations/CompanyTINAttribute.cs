@@ -47,7 +47,7 @@ namespace CountryValidation.DataAnnotations
 
             validationContext.Items.Add("Error", result.ErrorMessage);
 
-            IEnumerable<string> memberNames = null;
+            IEnumerable<string>? memberNames = null;
             if (validationContext.MemberName != null)
             {
                 memberNames = new[] { validationContext.MemberName };

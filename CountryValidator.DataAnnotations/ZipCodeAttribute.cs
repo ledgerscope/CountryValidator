@@ -22,7 +22,7 @@ namespace CountryValidation.DataAnnotations
 
         public Country CountryCode { get; set; }
 
-        protected override System.ComponentModel.DataAnnotations.ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override System.ComponentModel.DataAnnotations.ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             if (value == null)
             {
@@ -43,7 +43,7 @@ namespace CountryValidation.DataAnnotations
 
             validationContext.Items.Add("Error", result.ErrorMessage);
 
-            IEnumerable<string> memberNames = null;
+            IEnumerable<string>? memberNames = null;
             if (validationContext.MemberName != null)
             {
                 memberNames = new[] { validationContext.MemberName };
