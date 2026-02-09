@@ -26,7 +26,7 @@ namespace CountryValidation.DataAnnotations
 
         public Country CountryCode { get; set; }
 
-        protected override System.ComponentModel.DataAnnotations.ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override System.ComponentModel.DataAnnotations.ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             if (value == null)
             {
