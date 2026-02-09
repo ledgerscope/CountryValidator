@@ -13,7 +13,6 @@ namespace CountryValidation
 		public static bool IsCountrySupported(Country country)
 			=> CountryValidator.IsCountrySupported(country);
 
-
 		public static List<string> SupportedCountries
 			=> CountryValidator.SupportedCountries;
 
