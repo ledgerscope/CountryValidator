@@ -1,38 +1,44 @@
 ﻿namespace CountryValidation
 {
-    public sealed class ValidationResult
+    public sealed record ValidationResult
     {
+
+        public bool IsValid { get; }
+
+        public string ErrorMessage { get; }
+
+        public ValidationResult(bool isValid, string errorMessage)
+        {
+            IsValid = isValid;
+            ErrorMessage = errorMessage;
+        }
 
         public static ValidationResult Success()
         {
-            return new ValidationResult() { IsValid = true };
+            return new ValidationResult(true, string.Empty);
         }
 
         public static ValidationResult Invalid(string errorMessage)
         {
-            return new ValidationResult() { ErrorMessage = errorMessage, IsValid = false };
+            return new ValidationResult(false, errorMessage);
         }
 
         public static ValidationResult InvalidChecksum()
         {
-            return new ValidationResult() { ErrorMessage = $"Invalid checksum.", IsValid = false };
+            return new ValidationResult(false, "Invalid checksum.");
         }
         public static ValidationResult InvalidFormat(string format)
         {
-            return new ValidationResult() { ErrorMessage = $"Invalid format. The code must have this format {format}", IsValid = false };
+            return new ValidationResult(false, $"Invalid format. The code must have this format {format}");
         }
         public static ValidationResult InvalidDate()
         {
-            return new ValidationResult() { ErrorMessage = $"Invalid date", IsValid = false };
+            return new ValidationResult(false, "Invalid date");
         }
 
         public static ValidationResult InvalidLength()
         {
-            return new ValidationResult() { ErrorMessage = $"Invalid length", IsValid = false };
+            return new ValidationResult(false, "Invalid length");
         }
-
-        public bool IsValid { get; private set; }
-
-        public string ErrorMessage { get; private set; }
     }
 }
