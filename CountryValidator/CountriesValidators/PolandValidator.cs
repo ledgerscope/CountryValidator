@@ -7,11 +7,7 @@ namespace CountryValidation.Countries
 {
     public class PolandValidator : IdValidationAbstract
     {
-
-        public PolandValidator()
-        {
-            CountryCode = nameof(Country.PL);
-        }
+        public override Country CountryCode => Country.PL;
 
         /// <summary>
         /// Polish National Identification Number (PESEL)

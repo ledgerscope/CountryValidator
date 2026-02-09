@@ -6,11 +6,7 @@ namespace CountryValidation.Countries
 {
     public class IndiaValidator : IdValidationAbstract
     {
-
-        public IndiaValidator()
-        {
-            CountryCode = nameof(Country.IN);
-        }
+        public override Country CountryCode => Country.IN;
 
         readonly int[,] d = new int[,]
         {

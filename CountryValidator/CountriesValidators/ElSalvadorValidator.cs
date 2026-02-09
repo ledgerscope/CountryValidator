@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class ElSalvadorValidator : IdValidationAbstract
     {
-        public ElSalvadorValidator()
-        {
-            CountryCode = nameof(Country.SV);
-        }
+        public override Country CountryCode => Country.SV;
 
         public override ValidationResult ValidateEntity(string id)
         {

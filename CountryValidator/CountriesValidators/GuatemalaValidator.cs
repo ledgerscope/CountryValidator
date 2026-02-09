@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class GuatemalaValidator : IdValidationAbstract
     {
-        public GuatemalaValidator()
-        {
-            CountryCode = nameof(Country.GT);
-        }
+        public override Country CountryCode => Country.GT;
 
         public string CalculateChecksum(string number)
         {

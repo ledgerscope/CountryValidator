@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class SloveniaValidator : IdValidationAbstract
     {
-        public SloveniaValidator()
-        {
-            CountryCode = nameof(Country.SI);
-        }
+        public override Country CountryCode => Country.SI;
 
         /// <summary>
         /// Enotna matična številka občana, EMŠO, Unique Master Citizen Number

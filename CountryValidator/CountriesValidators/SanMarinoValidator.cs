@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class SanMarinoValidator : IdValidationAbstract
     {
-        public SanMarinoValidator()
-        {
-            CountryCode = nameof(Country.SM);
-        }
+        public override Country CountryCode => Country.SM;
 
         private readonly int[] _notAvailableNumbers = new int[]
         {

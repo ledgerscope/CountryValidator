@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class SerbiaValidator : IdValidationAbstract
     {
-        public SerbiaValidator()
-        {
-            CountryCode = nameof(Country.RS);
-        }
+        public override Country CountryCode => Country.RS;
 
         /// <summary>
         /// Unique Master Citizen Number JMBG

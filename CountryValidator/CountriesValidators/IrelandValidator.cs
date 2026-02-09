@@ -4,11 +4,7 @@ namespace CountryValidation.Countries
 {
     public class IrelandValidator : IdValidationAbstract
     {
-
-        public IrelandValidator()
-        {
-            CountryCode = nameof(Country.IE);
-        }
+        public override Country CountryCode => Country.IE;
 
         /// <summary>
         /// PPS No (Personal Public Service Number, Irish personal number).

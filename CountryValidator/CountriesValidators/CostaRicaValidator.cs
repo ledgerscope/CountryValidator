@@ -8,10 +8,7 @@ namespace CountryValidation.Countries
 {
     public class CostaRicaValidator : IdValidationAbstract
     {
-        public CostaRicaValidator()
-        {
-            CountryCode = nameof(Country.CR);
-        }
+        public override Country CountryCode => Country.CR;
 
         /// <summary>
         /// Costa Rica CPJ (Cédula de Persona Jurídica, Costa Rica tax number

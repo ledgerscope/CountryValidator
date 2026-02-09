@@ -6,6 +6,8 @@ namespace CountryValidation.Countries
 {
     public class MexicoValidator : IdValidationAbstract
     {
+        public override Country CountryCode => Country.MX;
+
         private static int DigitVerification(string curp17)
         {
             var dictionary = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";

@@ -4,11 +4,7 @@ namespace CountryValidation.Countries
 {
     public class IndonesiaValidator : IdValidationAbstract
     {
-
-        public IndonesiaValidator()
-        {
-            CountryCode = nameof(Country.ID);
-        }
+        public override Country CountryCode => Country.ID;
 
         /// <summary>
         /// NPWP

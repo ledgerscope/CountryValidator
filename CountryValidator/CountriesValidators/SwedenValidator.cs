@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class SwedenValidator : IdValidationAbstract
     {
-        public SwedenValidator()
-        {
-            CountryCode = nameof(Country.SE);
-        }
+        public override Country CountryCode => Country.SE;
 
         /// <summary>
         /// Orgnr (Organisationsnummer, Swedish company number)

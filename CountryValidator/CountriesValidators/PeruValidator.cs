@@ -6,11 +6,7 @@ namespace CountryValidation.Countries
 {
     public class PeruValidator : IdValidationAbstract
     {
-
-        public PeruValidator()
-        {
-            CountryCode = nameof(Country.PE);
-        }
+        public override Country CountryCode => Country.PE;
 
 
         private string CalculateChecksumNationalIdentity(string number)

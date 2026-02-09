@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class ParaguayValidator : IdValidationAbstract
     {
-        public ParaguayValidator()
-        {
-            CountryCode = nameof(Country.PY);
-        }
+        public override Country CountryCode => Country.PY;
 
 
         /// <summary>

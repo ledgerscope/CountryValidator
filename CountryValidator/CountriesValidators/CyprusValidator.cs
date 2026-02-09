@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class CyprusValidator : IdValidationAbstract
     {
-        public CyprusValidator()
-        {
-            CountryCode = nameof(Country.CY);
-        }
+        public override Country CountryCode => Country.CY;
 
         public override ValidationResult ValidateNationalIdentity(string ssn)
         {

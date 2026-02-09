@@ -2,8 +2,7 @@
 {
     public abstract class IdValidationAbstract
     {
-
-        public string CountryCode { get; protected set; }
+        public abstract Country CountryCode { get; }
 
         public virtual ValidationResult ValidateNationalIdentity(string ssn)
         {

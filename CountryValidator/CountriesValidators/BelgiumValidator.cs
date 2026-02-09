@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class BelgiumValidator : IdValidationAbstract
     {
-        public BelgiumValidator()
-        {
-            CountryCode = nameof(Country.BE);
-        }
+        public override Country CountryCode => Country.BE;
 
         /// <summary>
         /// BTW, TVA, NWSt, ondernemingsnummer (Belgian enterprise number).

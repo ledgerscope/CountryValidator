@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class SlovakiaValidator : IdValidationAbstract
     {
-        public SlovakiaValidator()
-        {
-            CountryCode = nameof(Country.SK);
-        }
+        public override Country CountryCode => Country.SK;
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
             ssn = ssn.RemoveSpecialCharacthers();

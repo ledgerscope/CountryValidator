@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class FaroeIslandsValidator : IdValidationAbstract
     {
-        public FaroeIslandsValidator()
-        {
-            CountryCode = nameof(Country.FO);
-        }
+        public override Country CountryCode => Country.FO;
 
 
         /// <summary>

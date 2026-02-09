@@ -7,10 +7,7 @@ namespace CountryValidation.Countries
 {
     public class ChileValidator : IdValidationAbstract
     {
-        public ChileValidator()
-        {
-            CountryCode = nameof(Country.CL);
-        }
+        public override Country CountryCode => Country.CL;
 
 
         /// <summary>

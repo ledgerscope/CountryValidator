@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class TaiwanValidator : IdValidationAbstract
     {
-        public TaiwanValidator()
-        {
-            CountryCode = nameof(Country.TW);
-        }
+        public override Country CountryCode => Country.TW;
         public override ValidationResult ValidateEntity(string id)
         {
             throw new NotImplementedException();

@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class RomaniaValidator : IdValidationAbstract
     {
-        public RomaniaValidator()
-        {
-            CountryCode = nameof(Country.RO);
-        }
+        public override Country CountryCode => Country.RO;
 
         public override ValidationResult ValidateEntity(string id)
         {

@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class CroatiaValidator : IdValidationAbstract
     {
-        public CroatiaValidator()
-        {
-            CountryCode = nameof(Country.HR);
-        }
+        public override Country CountryCode => Country.HR;
 
 
         /// <summary>

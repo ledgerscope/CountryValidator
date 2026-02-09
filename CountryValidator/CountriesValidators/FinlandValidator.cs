@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class FinlandValidator : IdValidationAbstract
     {
-        public FinlandValidator()
-        {
-            CountryCode = nameof(Country.FI);
-        }
+        public override Country CountryCode => Country.FI;
 
         /// <summary>
         /// Y-tunnus (Finnish business identifier).

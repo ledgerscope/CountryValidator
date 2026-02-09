@@ -7,6 +7,8 @@ namespace CountryValidation.Countries
 {
     public class ChinaValidator : IdValidationAbstract
     {
+        public override Country CountryCode => Country.CN;
+
         static readonly Dictionary<char, int> charToNumDict = new Dictionary<char, int>();
         static ChinaValidator()
         {

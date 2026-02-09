@@ -7,10 +7,7 @@ namespace CountryValidation.Countries
 {
     public class LuxembourgValidator : IdValidationAbstract
     {
-        public LuxembourgValidator()
-        {
-            CountryCode = nameof(Country.LU);
-        }
+        public override Country CountryCode => Country.LU;
 
         public override ValidationResult ValidateEntity(string id)
         {

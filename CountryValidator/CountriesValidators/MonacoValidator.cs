@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class MonacoValidator : IdValidationAbstract
     {
-        public MonacoValidator()
-        {
-            CountryCode = nameof(Country.MC);
-        }
+        public override Country CountryCode => Country.MC;
 
         public override ValidationResult ValidateEntity(string id)
         {

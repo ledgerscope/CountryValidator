@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class GeorgiaValidator : IdValidationAbstract
     {
-        public GeorgiaValidator()
-        {
-            CountryCode = nameof(Country.GE);
-        }
+        public override Country CountryCode => Country.GE;
 
         public override ValidationResult ValidateEntity(string ssn)
         {

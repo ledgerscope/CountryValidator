@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class MoldovaValidator : IdValidationAbstract
     {
-        public MoldovaValidator()
-        {
-            CountryCode = nameof(Country.MD);
-        }
+        public override Country CountryCode => Country.MD;
 
         public override ValidationResult ValidateEntity(string number)
         {

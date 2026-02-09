@@ -8,10 +8,7 @@ namespace CountryValidation.Countries
 {
     public class AustriaValidator : IdValidationAbstract
     {
-        public AustriaValidator()
-        {
-            CountryCode = nameof(Country.AT);
-        }
+        public override Country CountryCode => Country.AT;
 
 
         private int CalculateChecksum(string number)

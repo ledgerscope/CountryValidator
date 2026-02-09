@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class NorwayValidator : IdValidationAbstract
     {
-        public NorwayValidator()
-        {
-            CountryCode = nameof(Country.NO);
-        }
+        public override Country CountryCode => Country.NO;
         public override ValidationResult ValidateEntity(string id)
         {
             return ValidateVAT(id);

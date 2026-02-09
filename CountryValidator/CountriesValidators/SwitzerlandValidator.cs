@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class SwitzerlandValidator : IdValidationAbstract
     {
-        public SwitzerlandValidator()
-        {
-            CountryCode = nameof(Country.CH);
-        }
+        public override Country CountryCode => Country.CH;
 
         private int GetCheckDigit(string ssn)
         {

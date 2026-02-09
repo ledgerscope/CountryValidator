@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class NewZealandValidator : IdValidationAbstract
     {
-        public NewZealandValidator()
-        {
-            CountryCode = nameof(Country.NZ);
-        }
+        public override Country CountryCode => Country.NZ;
 
 
         /// <summary>

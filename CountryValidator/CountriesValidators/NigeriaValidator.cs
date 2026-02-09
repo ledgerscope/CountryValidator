@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class NigeriaValidator : IdValidationAbstract
     {
-        public NigeriaValidator()
-        {
-            CountryCode = nameof(Country.NG);
-        }
+        public override Country CountryCode => Country.NG;
 
         /// <summary>
         /// Nigerian National Identification Number (NIN)

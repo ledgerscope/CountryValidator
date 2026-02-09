@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class UkraineValidator : IdValidationAbstract
     {
-        public UkraineValidator()
-        {
-            CountryCode = nameof(Country.UA);
-        }
+        public override Country CountryCode => Country.UA;
 
         public override ValidationResult ValidateEntity(string id)
         {

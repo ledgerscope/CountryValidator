@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class MalaysiaValidator : IdValidationAbstract
     {
-        public MalaysiaValidator()
-        {
-            CountryCode = nameof(Country.MY);
-        }
+        public override Country CountryCode => Country.MY;
 
         /// <summary>
         ///   Nombor Cukai Pendapatan (ITN)

@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class BelarusValidator : IdValidationAbstract
     {
-        public BelarusValidator()
-        {
-            CountryCode = nameof(Country.BY);
-        }
+        public override Country CountryCode => Country.BY;
 
         /// <summary>
         /// Payer's account number (UNP)

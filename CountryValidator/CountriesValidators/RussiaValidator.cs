@@ -5,11 +5,7 @@ namespace CountryValidation.Countries
 {
     public class RussiaValidator : IdValidationAbstract
     {
-
-        public RussiaValidator()
-        {
-            CountryCode = nameof(Country.RU);
-        }
+        public override Country CountryCode => Country.RU;
 
         /// <summary>
         /// Validate Taxpayer Personal Identification Number (INN) 

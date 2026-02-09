@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class MauritiusValidator : IdValidationAbstract
     {
-        public MauritiusValidator()
-        {
-            CountryCode = nameof(Country.MU);
-        }
+        public override Country CountryCode => Country.MU;
 
         public override ValidationResult ValidateEntity(string id)
         {

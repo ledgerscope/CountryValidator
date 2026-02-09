@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class MontenegroValidator : IdValidationAbstract
     {
-        public MontenegroValidator()
-        {
-            CountryCode = nameof(Country.ME);
-        }
+        public override Country CountryCode => Country.ME;
 
         public override ValidationResult ValidateNationalIdentity(string value)
         {

@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class IcelandValidator : IdValidationAbstract
     {
-        public IcelandValidator()
-        {
-            CountryCode = nameof(Country.IS);
-        }
+        public override Country CountryCode => Country.IS;
         public override ValidationResult ValidateEntity(string id)
         {
             return ValidateIndividualTaxCode(id);

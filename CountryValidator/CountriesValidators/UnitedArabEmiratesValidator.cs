@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class UnitedArabEmiratesValidator : IdValidationAbstract
     {
-        public UnitedArabEmiratesValidator()
-        {
-            CountryCode = nameof(Country.AE);
-        }
+        public override Country CountryCode => Country.AE;
 
         /*
          * 

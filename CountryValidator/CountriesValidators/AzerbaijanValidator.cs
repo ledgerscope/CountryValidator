@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class AzerbaijanValidator : IdValidationAbstract
     {
-        public AzerbaijanValidator()
-        {
-            CountryCode = nameof(Country.AZ);
-        }
+        public override Country CountryCode => Country.AZ;
 
         /// <summary>
         /// PIN - Personal Identification Number

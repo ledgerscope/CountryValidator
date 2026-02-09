@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class ThailandValidator : IdValidationAbstract
     {
-        public ThailandValidator()
-        {
-            CountryCode = nameof(Country.TH);
-        }
+        public override Country CountryCode => Country.TH;
 
         /// <summary>
         /// Validate Thailand citizen number

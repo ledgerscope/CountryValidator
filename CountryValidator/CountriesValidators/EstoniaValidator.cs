@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class EstoniaValidator : IdValidationAbstract
     {
-        public EstoniaValidator()
-        {
-            CountryCode = nameof(Country.EE);
-        }
+        public override Country CountryCode => Country.EE;
 
         /// <summary>
         /// Registrikood (Estonian organisation registration code)

@@ -59,11 +59,7 @@ namespace CountryValidation.Countries
                  @"\A41(?<ff>\d{2})0(?<bbb>\d{3})(?<uuuu>\d{4})(?<p>\d{1})\z" } }
     };
 
-        public GermanyValidator()
-        {
-            CountryCode = nameof(Country.DE);
-
-        }
+        public override Country CountryCode => Country.DE;
 
         /// <summary>
         /// Steuernummer

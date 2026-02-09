@@ -7,10 +7,7 @@ namespace CountryValidation.Countries
 {
     public class UnitedStatesValidator : IdValidationAbstract
     {
-        public UnitedStatesValidator()
-        {
-            CountryCode = nameof(Country.US);
-        }
+        public override Country CountryCode => Country.US;
 
         static readonly string[] campuses = new string[]{"10", "12", "60", "67", "50", "53", "01", "02", "03", "04", "05", "06", "11", "13", "14", "16", "21", "22", "23", "25", "34", "51", "52", "54", "55",
             "56", "57", "58", "59", "65","30", "32", "35","36", "37", "38", "61","15", "24","20", "26", "27", "45", "46", "47","40", "44","94",

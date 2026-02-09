@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class AustraliaValidator : IdValidationAbstract
     {
-        public AustraliaValidator()
-        {
-            CountryCode = nameof(Country.AU);
-        }
+        public override Country CountryCode => Country.AU;
 
         /// <summary>
         /// Validate ABN, ACN or TFN

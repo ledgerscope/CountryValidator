@@ -7,10 +7,7 @@ namespace CountryValidation.Countries
     {
         readonly string _alphabet = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
 
-        public FranceValidator()
-        {
-            CountryCode = nameof(Country.FR);
-        }
+        public override Country CountryCode => Country.FR;
 
 
         /// <summary>

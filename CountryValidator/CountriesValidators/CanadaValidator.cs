@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class CanadaValidator : IdValidationAbstract
     {
-        public CanadaValidator()
-        {
-            CountryCode = nameof(Country.CA);
-        }
+        public override Country CountryCode => Country.CA;
 
         /// <summary>
         /// Validate Business Number

@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class SouthAfricaValidator : IdValidationAbstract
     {
-        public SouthAfricaValidator()
-        {
-            CountryCode = nameof(Country.ZA);
-        }
+        public override Country CountryCode => Country.ZA;
 
         public override ValidationResult ValidateNationalIdentity(string number)
         {

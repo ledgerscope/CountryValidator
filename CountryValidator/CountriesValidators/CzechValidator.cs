@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class CzechValidator : IdValidationAbstract
     {
-        public CzechValidator()
-        {
-            CountryCode = nameof(Country.CZ);
-        }
+        public override Country CountryCode => Country.CZ;
 
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {

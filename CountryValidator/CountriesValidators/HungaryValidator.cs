@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class HungaryValidator : IdValidationAbstract
     {
-        public HungaryValidator()
-        {
-            CountryCode = nameof(Country.HU);
-        }
+        public override Country CountryCode => Country.HU;
 
         /// <summary>
         /// Szemelyi Szam Ellenorzese

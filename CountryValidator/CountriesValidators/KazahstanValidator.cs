@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class KazahstanValidator : IdValidationAbstract
     {
-        public KazahstanValidator()
-        {
-            CountryCode = nameof(Country.KZ);
-        }
+        public override Country CountryCode => Country.KZ;
 
         /// <summary>
         /// BIN БСН – бизнес-сәйкестендіру нөмірі

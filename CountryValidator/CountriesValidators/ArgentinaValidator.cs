@@ -8,10 +8,7 @@ namespace CountryValidation.Countries
 {
     public class ArgentinaValidator : IdValidationAbstract
     {
-        public ArgentinaValidator()
-        {
-            CountryCode = nameof(Country.AR);
-        }
+        public override Country CountryCode => Country.AR;
 
         /// <summary>
         /// Validate CUIT Number - Código Único de Identificación Tributaria

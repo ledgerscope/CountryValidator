@@ -93,12 +93,7 @@ namespace CountryValidation.Countries
     "17"  // invoices for payments abroad
 };
 
-
-
-        public DominicanRepublicValidator()
-        {
-            CountryCode = nameof(Country.DO);
-        }
+        public override Country CountryCode => Country.DO;
 
         public override ValidationResult ValidateEntity(string id)
         {

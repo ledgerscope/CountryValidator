@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class AndorraValidator : IdValidationAbstract
     {
-        public AndorraValidator()
-        {
-            CountryCode = nameof(Country.AD);
-        }
+        public override Country CountryCode => Country.AD;
 
         /// <summary>
         /// NRT (Número de Registre Tributari, Andorra tax number)

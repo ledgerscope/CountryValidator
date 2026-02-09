@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class GreeceValidator : IdValidationAbstract
     {
-        public GreeceValidator()
-        {
-            CountryCode = nameof(Country.GR);
-        }
+        public override Country CountryCode => Country.GR;
 
         /// <summary>
         /// AMKA (Αριθμός Μητρώου Κοινωνικής Ασφάλισης, Greek social security number).

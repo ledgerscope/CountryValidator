@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class MacedoniaValidator : IdValidationAbstract
     {
-        public MacedoniaValidator()
-        {
-            CountryCode = nameof(Country.MK);
-        }
+        public override Country CountryCode => Country.MK;
 
         public override ValidationResult ValidateNationalIdentity(string value)
         {

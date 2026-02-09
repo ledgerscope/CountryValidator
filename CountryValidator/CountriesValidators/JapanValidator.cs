@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class JapanValidator : IdValidationAbstract
     {
-        public JapanValidator()
-        {
-            CountryCode = nameof(Country.JP);
-        }
+        public override Country CountryCode => Country.JP;
 
         private int CalculateChecksum(string number)
         {

@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class BahrainValidator : IdValidationAbstract
     {
-        public BahrainValidator()
-        {
-            CountryCode = nameof(Country.BH);
-        }
+        public override Country CountryCode => Country.BH;
 
         public override ValidationResult ValidateEntity(string id)
         {

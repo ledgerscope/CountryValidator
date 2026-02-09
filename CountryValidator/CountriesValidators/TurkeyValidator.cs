@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class TurkeyValidator : IdValidationAbstract
     {
-        public TurkeyValidator()
-        {
-            CountryCode = nameof(Country.TR);
-        }
+        public override Country CountryCode => Country.TR;
 
 
         /// <summary>

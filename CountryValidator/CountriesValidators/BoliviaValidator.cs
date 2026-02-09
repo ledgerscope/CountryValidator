@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class BoliviaValidator : IdValidationAbstract
     {
-        public BoliviaValidator()
-        {
-            CountryCode = nameof(Country.BO);
-        }
+        public override Country CountryCode => Country.BO;
 
         /// <summary>
         /// CI Number

@@ -8,10 +8,7 @@ namespace CountryValidation.Countries
 {
     public class ColombiaValidator : IdValidationAbstract
     {
-        public ColombiaValidator()
-        {
-            CountryCode = nameof(Country.CO);
-        }
+        public override Country CountryCode => Country.CO;
 
 
         /// <summary>

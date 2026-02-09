@@ -4,11 +4,7 @@ namespace CountryValidation.Countries
 {
     public class MaltaValidator : IdValidationAbstract
     {
-
-        public MaltaValidator()
-        {
-            CountryCode = nameof(Country.MT);
-        }
+        public override Country CountryCode => Country.MT;
 
 
         public override ValidationResult ValidateEntity(string id)

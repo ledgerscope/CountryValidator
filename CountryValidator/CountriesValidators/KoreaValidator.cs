@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class KoreaValidator : IdValidationAbstract
     {
-        public KoreaValidator()
-        {
-            CountryCode = nameof(Country.KR);
-        }
+        public override Country CountryCode => Country.KR;
         public override ValidationResult ValidateEntity(string id)
         {
             throw new NotSupportedException();

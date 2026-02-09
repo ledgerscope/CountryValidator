@@ -4,11 +4,7 @@ namespace CountryValidation.Countries
 {
     public class PhilippinesValidator : IdValidationAbstract
     {
-
-        public PhilippinesValidator()
-        {
-            CountryCode = nameof(Country.PH);
-        }
+        public override Country CountryCode => Country.PH;
 
         public override ValidationResult ValidateEntity(string id)
         {

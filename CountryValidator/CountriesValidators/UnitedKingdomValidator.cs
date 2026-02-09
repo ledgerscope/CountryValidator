@@ -7,11 +7,7 @@ namespace CountryValidation.Countries
 {
     public class UnitedKingdomValidator : IdValidationAbstract
     {
-
-        public UnitedKingdomValidator()
-        {
-            CountryCode = nameof(Country.GB);
-        }
+        public override Country CountryCode => Country.GB;
 
         public override ValidationResult ValidateEntity(string id)
         {

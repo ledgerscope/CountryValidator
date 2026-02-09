@@ -5,6 +5,8 @@ namespace CountryValidation.Countries
 {
     public class HongKongValidator : IdValidationAbstract
     {
+        public override Country CountryCode => Country.HK;
+
         public override ValidationResult ValidateEntity(string id)
         {
             throw new NotImplementedException();

@@ -9,11 +9,7 @@ namespace CountryValidation.Countries
         private static readonly int[] MultipliersForeignPhysicalPerson = { 21, 19, 17, 13, 11, 9, 7, 3, 1 };
         private static readonly int[] MultipliersMiscellaneous = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
 
-
-        public BulgariaValidator()
-        {
-            CountryCode = nameof(Country.BG);
-        }
+        public override Country CountryCode => Country.BG;
         public override ValidationResult ValidateEntity(string vat)
         {
             bool isValid;

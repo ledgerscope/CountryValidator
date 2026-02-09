@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class ArmeniaValidator : IdValidationAbstract
     {
-        public ArmeniaValidator()
-        {
-            CountryCode = nameof(Country.AM);
-        }
+        public override Country CountryCode => Country.AM;
 
         /// <summary>
         /// TIN Number

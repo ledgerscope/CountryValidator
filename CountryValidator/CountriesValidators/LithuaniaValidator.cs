@@ -4,10 +4,7 @@ namespace CountryValidation.Countries
 {
     public class LithuaniaValidator : IdValidationAbstract
     {
-        public LithuaniaValidator()
-        {
-            CountryCode = nameof(Country.LT);
-        }
+        public override Country CountryCode => Country.LT;
 
         public override ValidationResult ValidateEntity(string id)
         {

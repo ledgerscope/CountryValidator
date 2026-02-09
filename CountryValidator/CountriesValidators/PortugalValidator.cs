@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class PortugalValidator : IdValidationAbstract
     {
-        public PortugalValidator()
-        {
-            CountryCode = nameof(Country.PT);
-        }
+        public override Country CountryCode => Country.PT;
 
         readonly Dictionary<char, int> chars = new Dictionary<char, int>{
             { '0', 0},

@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class VenezuelaValidator : IdValidationAbstract
     {
-        public VenezuelaValidator()
-        {
-            CountryCode = nameof(Country.VE);
-        }
+        public override Country CountryCode => Country.VE;
         public override ValidationResult ValidateEntity(string id)
         {
             return ValidateVAT(id);

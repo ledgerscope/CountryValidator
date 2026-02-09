@@ -8,10 +8,7 @@ namespace CountryValidation.Countries
 {
     public class CubaValidator : IdValidationAbstract
     {
-        public CubaValidator()
-        {
-            CountryCode = nameof(Country.CU);
-        }
+        public override Country CountryCode => Country.CU;
 
         public override ValidationResult ValidateEntity(string id)
         {

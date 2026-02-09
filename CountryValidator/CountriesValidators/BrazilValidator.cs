@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class BrazilValidator : IdValidationAbstract
     {
-        public BrazilValidator()
-        {
-            CountryCode = nameof(Country.BR);
-        }
+        public override Country CountryCode => Country.BR;
         private int DigitChecksum(string numbers)
         {
             int index = 2;

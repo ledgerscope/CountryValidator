@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class UruguayValidator : IdValidationAbstract
     {
-        public UruguayValidator()
-        {
-            CountryCode = nameof(Country.UY);
-        }
+        public override Country CountryCode => Country.UY;
 
         /// <summary>
         /// Validate RUT numbers

@@ -6,10 +6,7 @@ namespace CountryValidation.Countries
 {
     public class EcuadorValidator : IdValidationAbstract
     {
-        public EcuadorValidator()
-        {
-            CountryCode = nameof(Country.EC);
-        }
+        public override Country CountryCode => Country.EC;
 
 
         private int Checksum(string number, int[] weights)

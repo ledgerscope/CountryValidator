@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class AlbaniaValidator : IdValidationAbstract
     {
-        public AlbaniaValidator()
-        {
-            CountryCode = nameof(Country.AL);
-        }
+        public override Country CountryCode => Country.AL;
 
         /// <summary>
         /// NIPT (Numri i Identifikimit për Personin e Tatueshëm, Albanian VAT number).

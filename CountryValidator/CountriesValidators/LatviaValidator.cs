@@ -5,10 +5,7 @@ namespace CountryValidation.Countries
 {
     public class LatviaValidator : IdValidationAbstract
     {
-        public LatviaValidator()
-        {
-            CountryCode = nameof(Country.LV);
-        }
+        public override Country CountryCode => Country.LV;
 
         private static bool IsValidDate(string dateString)
         {

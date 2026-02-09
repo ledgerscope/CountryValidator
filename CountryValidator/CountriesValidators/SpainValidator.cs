@@ -9,10 +9,7 @@ namespace CountryValidation.Countries
         readonly string CIF_REGEX = @"^([ABCDEFGHJNPQRSUVW])(\d{7})([0-9A-J])$";
         readonly string NIE_REGEX = @"^[XYZ]\d{7,8}[A-Z]$";
 
-        public SpainValidator()
-        {
-            CountryCode = nameof(Country.ES);
-        }
+        public override Country CountryCode => Country.ES;
 
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
