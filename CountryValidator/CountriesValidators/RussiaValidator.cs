@@ -28,7 +28,7 @@ namespace CountryValidation.Countries
             }
             else if (id.Length != 12)
             {
-                return ValidationResult.Invalid("Invalid length");
+                return ValidationResult.InvalidLength("12 characters");
             }
 
             int checkDigit10 = int.Parse(id[10].ToString());
@@ -72,7 +72,7 @@ namespace CountryValidation.Countries
         {
             if (id?.Length != 10)
             {
-                return ValidationResult.Invalid("Invalid length");
+                return ValidationResult.InvalidLength("10 characters");
 
             }
             return ValidateIndividualTaxCode(id);

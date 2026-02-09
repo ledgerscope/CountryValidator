@@ -10,9 +10,13 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateEntity(string ssn)
         {
             ssn = ssn.RemoveSpecialCharacthers() ?? string.Empty;
-            if (ssn.Length > 9 || !ssn.All(char.IsDigit))
+            if (ssn.Length > 9)
             {
-                return ValidationResult.Invalid("Invalid length. The code must have 9 digits");
+                return ValidationResult.InvalidLength("9 digits or less");
+            }
+            if (!ssn.All(char.IsDigit))
+            {
+                return ValidationResult.InvalidFormat("Must be all digits");
             }
             else if (ssn.Length < 9)
             {
@@ -21,7 +25,7 @@ namespace CountryValidation.Countries
 
             if (!Regex.IsMatch(ssn, @"^0*5\d+$"))
             {
-                return ValidationResult.Invalid("For companies the first digit must be 5");
+                return ValidationResult.InvalidFormat("For companies the first digit must be 5");
             }
             else if (!ssn.CheckLuhnDigit())
             {
@@ -33,10 +37,10 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateIndividualTaxCode(string ssn)
         {
-            ssn = ssn.RemoveSpecialCharacthers();
-            if (ssn?.Length != 9)
+            ssn = ssn.RemoveSpecialCharacthers() ?? string.Empty;
+            if (ssn.Length != 9)
             {
-                return ValidationResult.Invalid("Invalid length. The code must have 9 digits");
+                return ValidationResult.InvalidLength("9 digits");
             }
 
             int counter = 0;

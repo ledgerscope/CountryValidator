@@ -38,7 +38,7 @@ namespace CountryValidation.Countries
             }
             else if (number.Length != 10)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 digits");
             }
             else if (CalculateChecksum(number) != (int)char.GetNumericValue(number[3]))
             {
@@ -56,9 +56,10 @@ namespace CountryValidation.Countries
         {
             id = id.RemoveSpecialCharacthers().Replace("FN", string.Empty).Replace("fn", string.Empty);
 
-            if (!Regex.IsMatch(id, "^[0-9]+[a-z]$"))
+			const string regexPattern = @"^[0-9]+[a-zA-Z]$";
+            if (!Regex.IsMatch(id, regexPattern))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat(regexPattern);
             }
             return ValidationResult.Success();
         }
@@ -91,7 +92,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (number.Length != 9)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 digits");
             }
             else if (!number.All(char.IsDigit))
             {

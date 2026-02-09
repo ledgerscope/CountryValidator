@@ -16,7 +16,7 @@ namespace CountryValidation.Countries
             }
             else if (number.Length != 13)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("13 digits");
             }
             else if ((int)char.GetNumericValue((number[number.Length - 1])) != CalculateChecksum(number.Substring(0, number.Length - 1)))
             {

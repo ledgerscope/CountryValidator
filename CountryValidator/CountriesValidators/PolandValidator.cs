@@ -71,11 +71,11 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (!number.All(char.IsDigit))
             {
-                return ValidationResult.InvalidFormat("Invalid code. Only numbers are allowed");
+                return ValidationResult.InvalidFormat("Only numbers are allowed");
             }
             else if (!(number.Length == 9 || number.Length == 14))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 or 14 digits");
             }
             else if ((int)char.GetNumericValue(number[number.Length - 1]) != CalculateChecksum(number.Substring(0, number.Length - 1)))
             {

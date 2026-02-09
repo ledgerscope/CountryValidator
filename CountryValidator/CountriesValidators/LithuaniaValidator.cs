@@ -70,7 +70,7 @@ namespace CountryValidation.Countries
             {
                 if (vat[7] != '1')
                 {
-                    return ValidationResult.Invalid("Invalid format. The eight digit must be 1");
+                    return ValidationResult.InvalidFormat("Eighth digit must be 1");
                 }
 
                 var sum = 0;
@@ -102,7 +102,7 @@ namespace CountryValidation.Countries
         {
             if (vat[10] != '1')
             {
-                return ValidationResult.Invalid("Invalid format. The eleven digit must be 1");
+                return ValidationResult.InvalidFormat("Eleventh digit must be 1");
             }
 
             int[] multipliersTemporarily = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };

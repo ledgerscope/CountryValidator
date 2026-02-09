@@ -55,7 +55,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (id.Length != 18&&id.Length!=15)
             {
-                return ValidationResult.Invalid("Invalid length! The code must have a length of 18 or 15");
+                return ValidationResult.InvalidLength("15 or 18 characters");
             }
 
 
@@ -150,11 +150,11 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (id.Length != 18)
             {
-                return ValidationResult.Invalid("Invalid length! The code must have a length of 18");
+                return ValidationResult.InvalidLength("18 characters");
             }
             if (!Regex.IsMatch(id,"^[159Y]{1}[1239]{1}[0-9]{6}[^_IOZSVa-z\\W]{10}$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("^[159Y]{1}[1239]{1}[0-9]{6}[^_IOZSVa-z\\W]{10}$");
             }
             int tempSum = 0;
 

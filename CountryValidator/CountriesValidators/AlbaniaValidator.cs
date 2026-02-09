@@ -28,7 +28,7 @@ namespace CountryValidation.Countries
 
             if (ssn.Length != 10)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 characters");
             }
             else if (!Regex.IsMatch(ssn, @"^[A-O]\d(0[1-9]|1[0-2]|5[1-9]|6[0-2])(0?[1-9]|[1-3][0-9]|4[0-2])\d{3}\w$"))
             {
@@ -60,7 +60,7 @@ namespace CountryValidation.Countries
 
             if (nipt.Length != 10)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 characters");
             }
             if (!Regex.IsMatch(nipt, "^[JKL][0-9]{8}[A-Z]$"))
             {

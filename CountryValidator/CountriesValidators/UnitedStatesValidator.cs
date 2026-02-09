@@ -27,7 +27,7 @@ namespace CountryValidation.Countries
             }
 
             bool isValid = campuses.Contains(ein.Substring(0, 2));
-            return isValid ? ValidationResult.Success() : ValidationResult.Invalid("Invalid campus");
+            return isValid ? ValidationResult.Success() : ValidationResult.InvalidOther("Invalid campus");
         }
 
 
@@ -39,7 +39,7 @@ namespace CountryValidation.Countries
         public ValidationResult ValidateITIN(string fiscalCode)
         {
             bool isValid = Regex.IsMatch(fiscalCode, @"^(9\d{2})[- ]{0,1}((7[0-9]{1}|8[0-8]{1})|(9[0-2]{1})|(9[4-9]{1}))[- ]{0,1}(\d{4})$");
-            return isValid ? ValidationResult.Success() : ValidationResult.Invalid("Invalid code");
+            return isValid ? ValidationResult.Success() : ValidationResult.InvalidFormat("^(9\\d{2})[- ]{0,1}((7[0-9]{1}|8[0-8]{1})|(9[0-2]{1})|(9[4-9]{1}))[- ]{0,1}(\\d{4})$");
 
         }
 
@@ -63,12 +63,12 @@ namespace CountryValidation.Countries
             var serial = match.Groups[3].Value;
             if (area == "000" || area == "666" || area[0] == '9' || group == "00" || serial == "0000")
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidOther("Has bad numbers");
             }
 
             if (ssn == "078051120" || ssn == "457555462" || ssn == "219099999")
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidOther("Has bad numbers");
             }
             return ValidationResult.Success();
         }
@@ -91,7 +91,7 @@ namespace CountryValidation.Countries
             {
                 return ValidationResult.Success();
             }
-            return ValidationResult.Invalid("Invalid");
+            return ValidationResult.InvalidOther("Invalid");
         }
 
         /// <summary>

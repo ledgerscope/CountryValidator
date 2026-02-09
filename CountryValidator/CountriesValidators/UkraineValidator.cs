@@ -16,7 +16,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(id, @"^\d{12}$"))
             {
-                return ValidationResult.Invalid("123456789012");
+                return ValidationResult.InvalidFormat("12 digits");
             }
             return ValidationResult.Success();
         }

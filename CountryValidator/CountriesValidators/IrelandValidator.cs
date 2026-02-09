@@ -21,7 +21,7 @@ namespace CountryValidation.Countries
             }
             else if (id[id.Length - 1] == 'A')
             {
-                return ValidationResult.Invalid("Invalid code. This is a personal code");
+                return ValidationResult.InvalidOther("This is a personal code");
             }
 
             var numericPart = id.Substring(0, 7);
@@ -59,7 +59,7 @@ namespace CountryValidation.Countries
             }
             else if (ssn[ssn.Length - 1] == 'H')
             {
-                return ValidationResult.Invalid("Invalid code. This is a company code");
+                return ValidationResult.InvalidOther("This is a company code");
             }
 
             var numericPart = ssn.Substring(0, 7);

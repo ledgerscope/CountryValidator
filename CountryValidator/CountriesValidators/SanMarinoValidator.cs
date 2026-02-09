@@ -39,7 +39,7 @@ namespace CountryValidation.Countries
             {
                 return ValidationResult.Success();
             }
-            return ValidationResult.Invalid("Invalid");
+            return ValidationResult.InvalidOther("Invalid");
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace CountryValidation.Countries
 
             if (coe.Length > 5 || coe.Length == 0)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("1 to 5 digits");
             }
             else if (!coe.All(char.IsDigit))
             {
@@ -62,7 +62,7 @@ namespace CountryValidation.Countries
             }
             else if (coe.Length < 3 && !_notAvailableNumbers.Contains(int.Parse(coe)))
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidOther("Has bad numbers");
             }
             return ValidationResult.Success();
         }

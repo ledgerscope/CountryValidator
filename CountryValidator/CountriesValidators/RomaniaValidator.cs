@@ -26,7 +26,7 @@ namespace CountryValidation.Countries
 
             if (ssn.Length != 13)
             {
-                return ValidationResult.Invalid("Invalid length. The CNP must have 13 digits");
+                return ValidationResult.InvalidLength("13 digits");
             }
             for (int i = 0; i < 13; i++)
             {
@@ -74,7 +74,7 @@ namespace CountryValidation.Countries
                     }
                     break;
 
-                default: { return ValidationResult.Invalid("The first digit cannot be 0"); }
+                default: { return ValidationResult.InvalidFormat("First digit cannot be 0"); }
             }
             if (year < 1800 || year > 2099)
             {
@@ -91,7 +91,7 @@ namespace CountryValidation.Countries
 
             if (!Regex.IsMatch(vatId, @"^[0-9]{2,10}$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat(@"^[0-9]{2,10}$");
             }
 
             int[] multipliers = { 7, 5, 3, 2, 1, 7, 5, 3, 2 };

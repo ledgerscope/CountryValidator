@@ -74,7 +74,7 @@ namespace CountryValidation.Countries
             // 80-89: Serbian province of Vojvodina
             // 90-99: Kosovo
 
-            return 70 <= rr && rr <= 89 ? ValidationResult.Success() : ValidationResult.Invalid("Invalid Region. Serbia region is between 70-89");
+            return 70 <= rr && rr <= 89 ? ValidationResult.Success() : ValidationResult.InvalidOther("Serbia region is between 70-89");
         }
 
         public override ValidationResult ValidateEntity(string id)

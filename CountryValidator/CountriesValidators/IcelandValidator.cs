@@ -64,7 +64,7 @@ namespace CountryValidation.Countries
             {
                 return ValidationResult.Success();
             }
-            return ValidationResult.Invalid("The VAT code should have 5 or 6 digits  ");
+            return ValidationResult.InvalidFormat("5 or 6 digits  ");
         }
 
         public override ValidationResult ValidatePostalCode(string postalCode)

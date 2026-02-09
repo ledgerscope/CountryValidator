@@ -28,7 +28,7 @@ namespace CountryValidation.Countries
             }
             else
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("^[1-7][0-9]{4}-[0-9]{7}-[1-9]{1}$");
             }
         }
 

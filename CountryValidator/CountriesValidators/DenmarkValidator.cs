@@ -71,7 +71,7 @@ namespace CountryValidation.Countries
 
             if (vatId.Length != 8)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("8 digits");
             }
             else if (!vatId.All(char.IsDigit) || vatId[0] == '0')
             {

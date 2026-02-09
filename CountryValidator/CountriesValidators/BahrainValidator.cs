@@ -17,7 +17,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(id, @"^\d{9}$"))
             {
-                return ValidationResult.Invalid("123456789");
+                return ValidationResult.InvalidFormat("123456789");
             }
             return ValidationResult.Success();
         }

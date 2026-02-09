@@ -76,7 +76,7 @@ namespace CountryValidation.Countries
             // 80-89: Serbian province of Vojvodina
             // 90-99: Kosovo
 
-            return 10 <= rr && rr <= 19 ? ValidationResult.Success() : ValidationResult.Invalid("Invalid Region. Bosnia and Herzegovina region is between 10-19");
+            return 10 <= rr && rr <= 19 ? ValidationResult.Success() : ValidationResult.InvalidOther("Bosnia and Herzegovina region is between 10-19");
         }
 
 

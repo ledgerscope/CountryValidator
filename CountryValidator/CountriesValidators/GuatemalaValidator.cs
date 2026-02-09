@@ -45,15 +45,15 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (id.Length < 2 || id.Length > 12)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("2 to 12 characters");
             }
             else if (!id.Substring(0, id.Length - 1).All(char.IsDigit))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("All digits after first character");
             }
             else if (id[id.Length - 1] != 'K' && !char.IsDigit(id[id.Length - 1]))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("Missing the K");
             }
             else if (id[id.Length - 1].ToString() != CalculateChecksum(id.Substring(0, id.Length - 1)))
             {
@@ -78,7 +78,7 @@ namespace CountryValidation.Countries
             vatId = vatId.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(vatId, @"^\d{8}$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat(@"^\d{8}$");
             }
             return ValidationResult.Success();
 

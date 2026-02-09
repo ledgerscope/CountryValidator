@@ -37,7 +37,7 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateNationalIdentity(string number)
         {
             number = number.RemoveSpecialCharacthers();
-            return BgPhysicalPerson(number) ? ValidationResult.Success() : ValidationResult.Invalid("Invalid code");
+            return BgPhysicalPerson(number) ? ValidationResult.Success() : ValidationResult.InvalidFormat(nameof(BgPhysicalPerson));
         }
 
         public override ValidationResult ValidateIndividualTaxCode(string ssn)

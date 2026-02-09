@@ -12,7 +12,7 @@ namespace CountryValidation.Countries
 
             if (ssn.Length < 9 || ssn.Length > 10)
             {
-                return ValidationResult.Invalid("Invalid length");
+                return ValidationResult.InvalidLength("9 or 10 characters");
             }
 
             int year, month, day;

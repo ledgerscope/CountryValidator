@@ -17,7 +17,7 @@ namespace CountryValidation.Countries
             ssn = ssn.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(ssn, "^[1-8][0-9]{2}(0[1-9]|1[12])(0[1-9]|[12][0-9]|3[01])[0-9]{3}[0-9]$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("^[1-8][0-9]{2}(0[1-9]|1[12])(0[1-9]|[12][0-9]|3[01])[0-9]{3}[0-9]$");
             }
             var yearPrefix = "19";
             if (ssn[0] == '3' || ssn[0] == '4')
@@ -53,7 +53,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(id, @"^(?:[01][0-9]|20)(?:[01][0-9]|2[0-3])[0-9]{6}$"))
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidFormat(@"^(?:[01][0-9]|20)(?:[01][0-9]|2[0-3])[0-9]{6}$");
             }
             return ValidationResult.Success();
         }
@@ -69,7 +69,7 @@ namespace CountryValidation.Countries
 
             if (!Regex.IsMatch(code, @"^8[2-5][0-9]{4}[0-9]{3}[0-9]$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat(@"^8[2-5][0-9]{4}[0-9]{3}[0-9]$");
             }
 
             return (int)char.GetNumericValue(code[code.Length - 1]) == CheckSum(code) ? ValidationResult.Success() : ValidationResult.InvalidChecksum();

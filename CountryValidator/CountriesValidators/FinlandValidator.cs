@@ -28,7 +28,7 @@ namespace CountryValidation.Countries
         {
             if (!Regex.IsMatch(id, "^[0-9]{6}[-+A][0-9]{3}[0-9ABCDEFHJKLMNPRSTUVWXY]$"))
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidFormat("^[0-9]{6}[-+A][0-9]{3}[0-9ABCDEFHJKLMNPRSTUVWXY]$");
             }
 
             var day = int.Parse(id.Substring(0, 2));
@@ -57,7 +57,7 @@ namespace CountryValidation.Countries
             var individual = int.Parse(id.Substring(7, 3));
             if (individual < 2)
             {
-                return ValidationResult.Invalid("Invalid");
+                return ValidationResult.InvalidOther("Invalid");
             }
             var n = id.Substring(0, 6) + id.Substring(7, 3);
             long intn = long.Parse(n);

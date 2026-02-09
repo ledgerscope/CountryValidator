@@ -32,7 +32,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (!(number.Length == 8 || number.Length == 9))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("8 or 9 characters");
             }
             else if (!number.Substring(0, 8).All(char.IsDigit))
             {
@@ -78,7 +78,7 @@ namespace CountryValidation.Countries
             string[] validNumbers = new string[] { "10", "15", "17", "20" };
             if (number.Length != 11)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 characters");
             }
             else if (!number.All(char.IsDigit))
             {
@@ -86,7 +86,7 @@ namespace CountryValidation.Countries
             }
             else if (!validNumbers.Contains(number.Substring(0, 2)))
             {
-                return ValidationResult.Invalid("Invalid");
+                return ValidationResult.InvalidOther("Invalid");
             }
             else if (!number.EndsWith(CalculateChecksum(number).ToString()))
             {

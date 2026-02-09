@@ -17,7 +17,7 @@ namespace CountryValidation.Countries
             ssn = ssn.RemoveSpecialCharacthers();
             if (ssn.Length != 13)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("13 digits");
             }
 
             var sum = 0;
@@ -47,7 +47,7 @@ namespace CountryValidation.Countries
                 return ValidationResult.Success();
 
             }
-            return ValidationResult.Invalid("Invalid TIN");
+            return ValidationResult.InvalidOther("Invalid TIN");
 
         }
 

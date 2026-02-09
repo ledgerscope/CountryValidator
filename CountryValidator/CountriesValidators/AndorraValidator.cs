@@ -30,12 +30,12 @@ namespace CountryValidation.Countries
 
             if (id.Length != 8)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("8 characters");
             }
 
             if (!char.IsLetter(id[0]) || !char.IsLetter(id[id.Length - 1]))
             {
-                return ValidationResult.Invalid("Invalid format. First and last character must be letters");
+                return ValidationResult.InvalidFormat("First and last character must be letters");
             }
             else if (!id.Substring(1, 6).All(char.IsDigit))
             {
@@ -43,15 +43,15 @@ namespace CountryValidation.Countries
             }
             else if (!Regex.IsMatch(id, "^[ACDEFGLOPU]"))
             {
-                return ValidationResult.Invalid("Invalid format. First letter must be ACDEFGLOPU");
+                return ValidationResult.InvalidFormat("First letter must be ACDEFGLOPU");
             }
             else if (id[0] == 'F' && int.Parse(id.Substring(1, 6)) > 699999)
             {
-                return ValidationResult.Invalid("Invalid format.The number code cannot be higher than 699999");
+                return ValidationResult.InvalidFormat("The number code cannot be higher than 699999");
             }
             if ((id[0] == 'A' || id[0] == 'L') && !(699999 < int.Parse(id.Substring(1, 6)) && int.Parse(id.Substring(1, 6)) < 800000))
             {
-                return ValidationResult.Invalid("Invalid format.The number code must be between 699999 and 800000");
+                return ValidationResult.InvalidFormat("The number code must be between 699999 and 800000");
             }
 
             return ValidationResult.Success();

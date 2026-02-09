@@ -51,7 +51,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (id.Length != 14)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("14 characters");
             }
             else if (!id.All(char.IsDigit))
             {
@@ -59,7 +59,7 @@ namespace CountryValidation.Countries
             }
             else if (!new char[] { '0', '1', '9' }.Contains(id[0]))
             {
-                return ValidationResult.Invalid("Invalid code. First digit must be 0, 1 or 9");
+                return ValidationResult.InvalidOther("First digit must be 0, 1 or 9");
             }
             if ((int)char.GetNumericValue(id[id.Length - 1]) != CalculateChecksum(id))
             {

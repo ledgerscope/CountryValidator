@@ -13,7 +13,7 @@ namespace CountryValidation.Countries
 
             if (id.Length < 9 || id.Length > 10)
             {
-                return ValidationResult.Invalid("Invalid length. The code must have 9 or 10 digits");
+                return ValidationResult.InvalidLength("9 or 10 digits");
             }
 
             int year, month, day;
@@ -31,7 +31,7 @@ namespace CountryValidation.Countries
 
             if (id.Length == 9 && (year >= 54))
             {
-                return ValidationResult.Invalid("Invalid code. Age is wrong");
+                return ValidationResult.InvalidFormat("Year part must be 54 or greater");
             }
             else if (id.Length == 10)
             {
@@ -208,7 +208,7 @@ namespace CountryValidation.Countries
                     return ValidationResult.InvalidChecksum();
                 }
             }
-            return ValidationResult.Invalid("Invalid format");
+            return ValidationResult.InvalidOther("Invalid format");
         }
 
         public override ValidationResult ValidatePostalCode(string postalCode)

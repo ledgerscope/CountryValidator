@@ -28,7 +28,7 @@ namespace CountryValidation.Countries
 
             if (id.Length != 10)
             {
-                return ValidationResult.Invalid("Invalid length");
+                return ValidationResult.InvalidLength("10 characters");
             }
             else if (!Regex.IsMatch(id, "^[VEJPG][0-9]{9}$"))
             {

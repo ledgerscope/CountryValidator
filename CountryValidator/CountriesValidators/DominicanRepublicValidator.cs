@@ -119,7 +119,7 @@ namespace CountryValidation.Countries
             }
             else if (id.Length != 11)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 digits");
             }
             else if (!id.CheckLuhnDigit())
             {
@@ -147,7 +147,7 @@ namespace CountryValidation.Countries
             }
             else if (rnc.Length != 9)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 digits");
             }
             else if (CalculateChecksum(rnc.Substring(0, rnc.Length - 1)) != rnc.Substring(rnc.Length - 1))
             {
@@ -170,39 +170,39 @@ namespace CountryValidation.Countries
                 if (number[0] != 'E' || !number.Substring(1).All(char.IsDigit))
                 {
 
-                    return ValidationResult.Invalid("Invalid code");
+                    return ValidationResult.InvalidOther("Not starting with E and all digits thereafter");
 
                 }
                 else if (!_ecf_document_types.Contains(number.Substring(1, 2)))
                 {
-                    return ValidationResult.Invalid("Invalid ecf document type");
+                    return ValidationResult.InvalidOther("Invalid ecf document type");
                 }
             }
             else if (number.Length == 11)
             {
                 if (number[0] != 'B' || !number.Substring(1).All(char.IsDigit))
                 {
-                    return ValidationResult.Invalid("Invalid code");
+                    return ValidationResult.InvalidOther("Not starting with B and not all digits after start");
                 }
                 else if (_ncf_document_types.Contains(number.Substring(1, 2)))
                 {
-                    return ValidationResult.Invalid("Invalid code");
+                    return ValidationResult.InvalidOther("Unrecognized doc type");
                 }
             }
             else if (number.Length == 19)
             {
                 if (!Regex.IsMatch(number, "^[AP]") || !number.Substring(1).All(char.IsDigit))
                 {
-                    return ValidationResult.Invalid("Invalid code");
+                    return ValidationResult.InvalidFormat("Not ^[AP] and not all digits after first character");
                 }
                 else if (!_ncf_document_types.Contains(number.Substring(9, 2)))
                 {
-                    return ValidationResult.Invalid("Invalid ncf document type");
+                    return ValidationResult.InvalidOther("Invalid ncf document type");
                 }
             }
             else
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11, 13, or 19 characters");
             }
             return ValidationResult.Success();
 

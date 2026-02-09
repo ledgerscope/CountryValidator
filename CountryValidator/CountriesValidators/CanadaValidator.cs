@@ -19,11 +19,11 @@ namespace CountryValidation.Countries
             var chardDigits = bn.ToCharArray();
             if (chardDigits.Length != 9)
             {
-                return ValidationResult.Invalid("Invalid length! The code must have a length of 9");
+                return ValidationResult.InvalidLength("9 characters");
             }
             else if (chardDigits[0] != '8')
             {
-                return ValidationResult.Invalid("Invalid format! The first characther must be 8");
+                return ValidationResult.InvalidFormat("The first characther must be 8");
             }
 
             int[] digits = new int[chardDigits.Length];
@@ -31,7 +31,7 @@ namespace CountryValidation.Countries
             {
                 if (!int.TryParse(chardDigits[i].ToString(), out digits[i]))
                 {
-                    return ValidationResult.Invalid("Invalid format! Only digits are allowed");
+                    return ValidationResult.InvalidFormat("All digits");
                 }
             }
 
@@ -65,7 +65,7 @@ namespace CountryValidation.Countries
             {
                 if (!int.TryParse(chardDigits[i].ToString(), out digits[i]))
                 {
-                    return ValidationResult.Invalid("Invalid format! Only digits are allowed");
+                    return ValidationResult.InvalidFormat("All digits");
                 }
             }
 

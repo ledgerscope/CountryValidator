@@ -29,11 +29,11 @@ namespace CountryValidation.Countries
 
             if (!(id.Length == 8 || id.Length == 9))
             {
-                return ValidationResult.Invalid("Invalid length. The code should have 8 or 9 charachters");
+                return ValidationResult.InvalidLength("8 or 9 charachters");
             }
             else if (!Regex.IsMatch("^[A-NP-Z]{1,2}[0-9]{6}[0-9A]$", string.Empty))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("^[A-NP-Z]{1,2}[0-9]{6}[0-9A]$");
             }
 
             int weight = id.Length;

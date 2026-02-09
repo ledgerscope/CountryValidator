@@ -44,7 +44,7 @@ namespace CountryValidation.Countries
             ssn = ssn.RemoveSpecialCharacthers();
             if (ssn?.Length != 11)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 digits");
             }
             else if (!ssn.All(char.IsDigit))
             {
@@ -86,11 +86,11 @@ namespace CountryValidation.Countries
 
             if (ssn.Length != 13)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("13 characters");
             }
             else if (!Regex.IsMatch(ssn, "(1[89]|20)\\d{2}(0[1-9]|1[012])(0[1-9]|[1-2][0-9]|3[0-1])\\d{5}"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("(1[89]|20)\\d{2}(0[1-9]|1[012])(0[1-9]|[1-2][0-9]|3[0-1])\\d{5}");
             }
 
             try

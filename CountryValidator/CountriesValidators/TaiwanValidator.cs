@@ -28,7 +28,7 @@ namespace CountryValidation.Countries
             {
                 return ValidateResidentSSN(ssn);
             }
-            return ValidationResult.Invalid("Invalid format");
+            return ValidationResult.InvalidFormat("Not " + "^[A-Z][12][0-9]{8}$" + " and not " + "^[A-Z][A-D][0-9]{8}$");
         }
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(id, "^[AaBbCcEeHhKkMmOoPpTt]{2}"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("^[AaBbCcEeHhKkMmOoPpTt]{2}");
             }
             return ValidateUNP(id);
         }
@@ -36,7 +36,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (!number.Substring(0, 2).All(char.IsDigit))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("First two characters must be digits");
             }
             return ValidateUNP(number);
 
@@ -54,7 +54,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(number, "^[AaBbCcEeHhKkMmOoPpTt]{2}"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("^[AaBbCcEeHhKkMmOoPpTt]{2}");
             }
             return ValidateUNP(number);
         }
@@ -63,7 +63,7 @@ namespace CountryValidation.Countries
         {
             if (number.Length != 9)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 characters");
             }
             else if (!number.Substring(2).All(char.IsDigit))
             {
@@ -71,7 +71,7 @@ namespace CountryValidation.Countries
             }
             else if (!Regex.IsMatch(number, "^[1234567AaBbCcEeHhKkMm]"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("^[1234567AaBbCcEeHhKkMm]");
             }
             else if (CalculatChecksum(number) != number.Substring(number.Length - 1))
             {

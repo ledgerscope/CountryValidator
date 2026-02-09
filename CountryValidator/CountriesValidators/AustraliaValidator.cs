@@ -29,7 +29,7 @@ namespace CountryValidation.Countries
                 return ValidationResult.Success();
 
             }
-            return ValidationResult.Invalid("Invalid");
+            return ValidationResult.InvalidOther("Not a ABN, ACN, or TFN");
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace CountryValidation.Countries
             }
             if (!(number.Length == 8 || number.Length == 9))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("8 or 9 digits");
             }
             if (CheckSumTFN(number) != 0)
             {
@@ -90,7 +90,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (number?.Length != 11)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 digits");
             }
             else if (!number.All(char.IsDigit))
             {
@@ -109,7 +109,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (number.Length != 9)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 digits");
             }
             else if (!number.All(char.IsDigit))
             {

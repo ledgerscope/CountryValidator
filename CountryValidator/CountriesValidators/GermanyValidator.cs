@@ -71,11 +71,11 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (!id.All(char.IsDigit))
             {
-                return ValidationResult.Invalid("Invalid format. Only numbers are allowed");
+                return ValidationResult.InvalidFormat("All digits");
             }
             else if (!(id.Length == 10 || id.Length == 11 || id.Length == 13))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10, 11, or 13 digits");
             }
 
             foreach (var item in regions)
@@ -88,7 +88,7 @@ namespace CountryValidation.Countries
                     }
                 }
             }
-            return ValidationResult.Invalid("Invalid code");
+            return ValidationResult.InvalidOther("unrecognized region");
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace CountryValidation.Countries
 
             else if (id[0] == '0')
             {
-                return ValidationResult.Invalid("Invalid format. The first digit must never be 0.");
+                return ValidationResult.InvalidFormat("First digit cannot be 0.");
             }
 
             char[] digits = id.ToCharArray();
@@ -118,7 +118,7 @@ namespace CountryValidation.Countries
 
             if (counts.Count != 9 && counts.Count != 8)
             {
-                return ValidationResult.Invalid("Invalid");
+                return ValidationResult.InvalidOther("Wrong number of counts");
             }
             int sum = 0;
             int product = 10;

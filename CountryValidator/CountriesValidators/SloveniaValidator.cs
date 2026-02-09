@@ -76,7 +76,7 @@ namespace CountryValidation.Countries
             // 80-89: Serbian province of Vojvodina
             // 90-99: Kosovo
 
-            return 50 <= rr && rr <= 59 ? ValidationResult.Success() : ValidationResult.Invalid("Invalid Region. Slovenia region is between 50-59");
+            return 50 <= rr && rr <= 59 ? ValidationResult.Success() : ValidationResult.InvalidOther("Slovenia region is between 50-59");
         }
 
 

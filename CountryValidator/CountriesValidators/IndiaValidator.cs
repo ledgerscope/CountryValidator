@@ -80,7 +80,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (id.Length != 10)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 characters");
             }
             else if (!Regex.IsMatch(id, "^[A-Z]{5}[0-9]{4}[A-Z]$"))
             {
@@ -88,7 +88,7 @@ namespace CountryValidation.Countries
             }
             else if (!HasValidCardType(id))
             {
-                return ValidationResult.Invalid("Invalid card type");
+                return ValidationResult.InvalidOther("Invalid card type");
             }
             return ValidationResult.Success();
         }

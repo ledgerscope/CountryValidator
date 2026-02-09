@@ -35,7 +35,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (number.Length != 13)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("13 digits");
             }
             else if (!number.All(char.IsDigit))
             {

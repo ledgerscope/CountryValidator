@@ -40,7 +40,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (number.Length > 9 || number.Length < 6)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("6 to 9 digits");
             }
             else if (!number.All(char.IsDigit))
             {

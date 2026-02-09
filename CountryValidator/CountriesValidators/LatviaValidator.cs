@@ -39,7 +39,7 @@ namespace CountryValidation.Countries
             var match = Regex.Match(identificationCode, "([0-2]\\d|[3][0-1])([0]\\d|[1][0-2])(\\d{2})([0-2])(\\d{3})(\\d)");
             if (!match.Success)
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("([0-2]\\d|[3][0-1])([0]\\d|[1][0-2])(\\d{2})([0-2])(\\d{3})(\\d)");
             }
 
             var centuryNumber = int.Parse(match.Groups[4].Value);
@@ -88,7 +88,7 @@ namespace CountryValidation.Countries
             if (Regex.IsMatch(vatId, "^[0-3]"))
             {
                 bool secondRegex = Regex.IsMatch(vatId, "^[0-3][0-9][0-1][0-9]");
-                return secondRegex ? ValidationResult.Success() : ValidationResult.Invalid("Invalid");
+                return secondRegex ? ValidationResult.Success() : ValidationResult.InvalidFormat("^[0-3][0-9][0-1][0-9]");
             }
             var sum = vatId.Sum(multipliers);
 

@@ -22,7 +22,7 @@ namespace CountryValidation.Countries
             }
             else if (number.Length != 11)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 digits");
             }
             else if (!number.CheckLuhnDigit())
             {

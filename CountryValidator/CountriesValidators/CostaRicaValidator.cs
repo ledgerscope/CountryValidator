@@ -26,7 +26,7 @@ namespace CountryValidation.Countries
 
             if (number.Length != 10)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 characters");
             }
             else if (!number.All(char.IsDigit))
             {
@@ -34,23 +34,23 @@ namespace CountryValidation.Countries
             }
             else if (!Regex.IsMatch(number, "^[2345]"))
             {
-                return ValidationResult.Invalid("Invalid format. First digit must be 2,3,4 or 5");
+                return ValidationResult.InvalidFormat("First digit must be 2,3,4 or 5");
             }
             else if (number[0] == '2' && !Regex.IsMatch(number, "^2(100|200|300|400)"))
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidFormat("^2(100|200|300|400)");
             }
             else if (number[0] == '3' && !class_three_types.Contains(number.Substring(1, 3)))
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidFormat("Class-three types");
             }
             else if (number[0] == '4' && number.Substring(1, 3) != "000")
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidFormat("Starts with 000");
             }
             else if (number[0] == '5' && number.Substring(1, 3) != "001")
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidFormat("Starts with x001");
             }
             return ValidationResult.Success();
         }
@@ -72,7 +72,7 @@ namespace CountryValidation.Countries
             {
                 return ValidationResult.Success();
             }
-            return ValidationResult.Invalid("Invalid code");
+            return ValidationResult.InvalidOther("Not CPF or Resident");
         }
 
         public ValidationResult ValidateCPF(string number)
@@ -81,7 +81,7 @@ namespace CountryValidation.Countries
 
             if (!(number.Length == 10 || number.Length == 9))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 or 10 characters");
             }
             else if (!number.All(char.IsDigit))
             {
@@ -113,7 +113,7 @@ namespace CountryValidation.Countries
 
             if (!(number.Length == 11 || number.Length == 12))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 or 12 characters");
             }
             else if (!number.All(char.IsDigit))
             {
@@ -121,7 +121,7 @@ namespace CountryValidation.Countries
             }
             else if (number[0] != '1')
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("First digit must be 1");
             }
             return ValidationResult.Success();
         }

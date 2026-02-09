@@ -24,7 +24,7 @@ namespace CountryValidation.Countries
             }
             else if (number.Length != 9)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 digits");
             }
             return number.CheckLuhnDigit() ? ValidationResult.Success() : ValidationResult.InvalidChecksum();
         }
@@ -43,7 +43,7 @@ namespace CountryValidation.Countries
             }
             else if (number.Length != 13)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("13 digits");
             }
             return ValidationResult.Success();
         }
@@ -58,13 +58,13 @@ namespace CountryValidation.Countries
             value = value.RemoveSpecialCharacthers();
             if (value.Length != 15)
             {
-                return ValidationResult.Invalid("Invalid length");
+                return ValidationResult.InvalidLength("15 characters");
             }
             var pattern = @"^([1278])(\d{2})(0[1-9]|1[0-2]|20)(\d{2}|2[AB])(\d{3})(\d{3})(\d{2})$";
             var match = Regex.Match(value, pattern);
             if (!match.Success)
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat(@"^([1278])(\d{2})(0[1-9]|1[0-2]|20)(\d{2}|2[AB])(\d{3})(\d{3})(\d{2})$");
             }
 
             string gender = match.Groups[1].Value;
@@ -80,7 +80,7 @@ namespace CountryValidation.Countries
 
             if (certificate == "000" || int.Parse(key) * 1 > 97)
             {
-                return ValidationResult.Invalid("Invalid certificate");
+                return ValidationResult.InvalidOther("Invalid certificate");
             }
 
             if (department == "2A")
@@ -96,7 +96,7 @@ namespace CountryValidation.Countries
                 department += city[0];
                 if (int.Parse(department) < 970 || int.Parse(department) >= 989)
                 {
-                    return ValidationResult.Invalid("Invalid department");
+                    return ValidationResult.InvalidOther("Invalid department");
                 }
 
                 city = city.Substring(1);
@@ -104,12 +104,12 @@ namespace CountryValidation.Countries
 
                 if (cityNumber < 1 || cityNumber > 90)
                 {
-                    return ValidationResult.Invalid("Invalid city");
+                    return ValidationResult.InvalidOther("Invalid city");
                 }
             }
             else if (cityNumber < 1 || cityNumber > 990)
             {
-                return ValidationResult.Invalid("Invalid city");
+                return ValidationResult.InvalidOther("Invalid city");
             }
 
             string insee = $"{gender}{year}{month}{department.Replace("A", "0").Replace("B", "0")}{city}{certificate}";
@@ -133,11 +133,11 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers().ToUpper().Replace("FR", string.Empty);
             if (number.Length != 11)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 characters");
             }
             else if (_alphabet.IndexOf(number[0]) == -1)
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidOther("Invalid format");
             }
             else if (!number.Substring(2).All(char.IsDigit))
             {

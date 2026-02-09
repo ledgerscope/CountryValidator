@@ -25,7 +25,7 @@ namespace CountryValidation.Countries
 
             if (number.Substring(2, 3) != "000")
             {
-                return ValidationResult.Invalid("Invalid Code");
+                return ValidationResult.InvalidFormat("Must be line xx000");
             }
 
             return new FranceValidator().ValidateVAT(number);

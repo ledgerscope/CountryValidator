@@ -41,7 +41,7 @@ namespace CountryValidation.Countries
             }
             else if (!number.All(char.IsDigit))
             {
-                return ValidationResult.Invalid("Only digits are allowed");
+                return ValidationResult.InvalidFormat("All digits");
             }
             if (CalculateChecksum(number.Substring(0, number.Length - 1)) != number[number.Length - 1])
             {

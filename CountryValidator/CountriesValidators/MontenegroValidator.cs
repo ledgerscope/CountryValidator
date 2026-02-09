@@ -69,7 +69,7 @@ namespace CountryValidation.Countries
             // 80-89: Serbian province of Vojvodina
             // 90-99: Kosovo
 
-            return 20 <= rr && rr <= 29 ? ValidationResult.Success() : ValidationResult.Invalid("Invalid Region. Montenegro region is between 20-29");
+            return 20 <= rr && rr <= 29 ? ValidationResult.Success() : ValidationResult.InvalidOther("Montenegro region is between 20-29");
         }
 
 

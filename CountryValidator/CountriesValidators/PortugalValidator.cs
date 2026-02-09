@@ -78,7 +78,7 @@ namespace CountryValidation.Countries
             }
             else if (Regex.IsMatch(id, "^[123]"))
             {
-                return ValidationResult.Invalid("Invalid code. This is not a company nif.");
+                return ValidationResult.InvalidOther("This is not a company nif.");
             }
 
             var sum = id.Sum(multipliers);
@@ -101,12 +101,12 @@ namespace CountryValidation.Countries
 
             if (!Regex.IsMatch(code, @"^\d{9}$"))
             {
-                return ValidationResult.InvalidFormat("123456789");
+                return ValidationResult.InvalidFormat("9 digits");
 
             }
             else if (Regex.IsMatch(code, "^[5]"))
             {
-                return ValidationResult.Invalid("Invalid code. This is not a personal nif.");
+                return ValidationResult.InvalidOther("This is not a personal nif.");
             }
 
             var sum = code.Sum(multipliers);
@@ -145,7 +145,7 @@ namespace CountryValidation.Countries
 
             if (value?.Length != 9)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 digits");
             }
             else if (!value.All(char.IsDigit))
             {
@@ -167,7 +167,7 @@ namespace CountryValidation.Countries
             value = value.RemoveSpecialCharacthers();
             if (value?.Length != 12)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("12 characters");
             }
 
 
@@ -228,7 +228,7 @@ namespace CountryValidation.Countries
             }
             else if (Regex.IsMatch(vatId, "^[123]"))
             {
-                return ValidationResult.Invalid("Invalid code. This is not a company nif.");
+                return ValidationResult.InvalidOther("This is not a company nif.");
             }
 
             var sum = vatId.Sum(multipliers);

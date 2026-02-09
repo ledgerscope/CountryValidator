@@ -44,7 +44,7 @@ namespace CountryValidation.Countries
 
             if (!(number.Length == 8 || number.Length == 9))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("8 or 9 characters");
             }
             else if (!number.Substring(0, number.Length - 1).All(char.IsDigit))
             {

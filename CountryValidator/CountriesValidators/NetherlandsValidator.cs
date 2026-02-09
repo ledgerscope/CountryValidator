@@ -50,11 +50,11 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (!(number.All(char.IsDigit) || !int.TryParse(number, out var parsedNum) || parsedNum <= 0 ))
             {
-                return ValidationResult.Invalid("Invalid format. Only digits are allowed");
+                return ValidationResult.InvalidFormat("All digits");
             }
             else if (number.Length != 9)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 digits");
             }
             else if (CheckSum(number) != 0)
             {
@@ -82,7 +82,7 @@ namespace CountryValidation.Countries
             }
             else if (number.Length != 9)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("9 characters");
             }
             else if (Checksum(number) != 5)
             {
@@ -114,7 +114,7 @@ namespace CountryValidation.Countries
 
             if (!Regex.IsMatch(vatId, @"^\d{9}B\d{2}$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat(@"^\d{9}B\d{2}$");
             }
 
             int[] multipliers = { 9, 8, 7, 6, 5, 4, 3, 2 };

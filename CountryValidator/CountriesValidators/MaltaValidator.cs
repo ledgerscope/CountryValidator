@@ -12,7 +12,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers().ToUpper();
             if (id.Length > 8 || id.Length < 4)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("4 to 8 characters");
             }
             id = id.PadLeft(8, '0');
             if (!Regex.IsMatch(id, @"^\d{8}$"))
@@ -28,7 +28,7 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers().ToUpper();
             if (id.Length > 8 || id.Length < 4)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("4 to 8 characters");
             }
             id = id.PadLeft(8, '0');
             if (!Regex.IsMatch(id, @"^\d{7}[1-9MGAPLHBZ]$"))

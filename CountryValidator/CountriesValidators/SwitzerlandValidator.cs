@@ -57,11 +57,11 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers().ToUpper();
             if (id.Length != 12)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("12 characters");
             }
             else if (!id.StartsWith("CHE"))
             {
-                return ValidationResult.Invalid("Invalid company. First 3 letters must be 'CHE'");
+                return ValidationResult.InvalidFormat("Invalid company. First 3 letters must be 'CHE'");
             }
             else if (!id.Substring(3).All(char.IsDigit))
             {

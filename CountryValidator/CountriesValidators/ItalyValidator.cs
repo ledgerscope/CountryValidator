@@ -18,7 +18,7 @@ namespace CountryValidation.Countries
 
             if (string.IsNullOrEmpty(ssn) || ssn.Length < 16)
             {
-                return ValidationResult.Invalid("Invalid length. The code must have 16 characters");
+                return ValidationResult.InvalidLength("16 characters");
             }
 
             ssn = Normalize(ssn, false);
@@ -27,7 +27,7 @@ namespace CountryValidation.Countries
                 string nonOmocodeFC = ReplaceOmocodeChars(ssn);
                 if (!CheckRegex.Match(nonOmocodeFC).Success)
                 {
-                    return ValidationResult.Invalid("");
+                    return ValidationResult.InvalidFormat(nameof(nonOmocodeFC));
                 }
             }
             bool isValid = ssn[15] == GetControlChar(ssn.Substring(0, 15));
@@ -101,19 +101,19 @@ namespace CountryValidation.Countries
             {
                 if (res == 0)
                 {
-                    return ValidationResult.Invalid("Invalid format");
+                    return ValidationResult.InvalidOther("Invalid format");
                 }
             }
             else
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidOther("Invalid format");
             }
 
             var temp = int.Parse(vat.Substring(7, 3));
 
             if ((temp < 1 || temp > 201) && temp != 999 && temp != 888)
             {
-                return ValidationResult.Invalid("Invalid");
+                return ValidationResult.InvalidOther("Invalid");
             }
 
             var index = 0;

@@ -20,7 +20,7 @@ namespace CountryValidation.Countries
             ird = ird.Replace("NZ", string.Empty).Replace("nz", string.Empty);
             if (!(ird.Length != 8 || ird.Length != 9))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("8 or 9 characters");
             }
             else if (!ird.All(char.IsDigit))
             {
@@ -28,7 +28,7 @@ namespace CountryValidation.Countries
             }
             else if (!(10000000 < long.Parse(ird) && long.Parse(ird) < 150000000))
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidOther("Number is out of range");
             }
             else if (Char.GetNumericValue(ird[ird.Length - 1]) != CalculateChecksum(ird.Substring(0, ird.Length - 1)))
             {

@@ -10,13 +10,13 @@ namespace CountryValidation
 
         public string ErrorMessage { get; }
 
-        public ValidationResult(ValidationStatus validity, string? format = null)
+        public ValidationResult(ValidationStatus validity, string? info = null)
         {
             Validity = validity;
-            ErrorMessage = getErrorMessage(validity, format);
+            ErrorMessage = getErrorMessage(validity, info);
         }
 
-        private string getErrorMessage(ValidationStatus validity, string? format)
+        private string getErrorMessage(ValidationStatus validity, string? info)
         {
             switch(validity)
             {
@@ -25,11 +25,15 @@ namespace CountryValidation
                 case ValidationStatus.InvalidChecksum:
                     return "Invalid checksum.";
                 case ValidationStatus.InvalidFormat:
-                    return format ?? string.Empty;
+                    return $"Does not conform to format: {info}";
                 case ValidationStatus.InvalidDate:
                     return "Invalid date";
                 case ValidationStatus.InvalidLength:
-                    return "Invalid length";
+                    return $"Invalid length. Required length: {info}";
+                case ValidationStatus.InvalidOther:
+                    return info ?? string.Empty;
+                case ValidationStatus.CountryNotSupported:
+                    return $"Country not supported: {info}";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(validity), validity, null);
             }
@@ -46,12 +50,12 @@ namespace CountryValidation
             return new ValidationResult(ValidationStatus.InvalidChecksum);
         }
 
-        public static ValidationResult Invalid(string format)
-            => InvalidFormat(format);
+        //public static ValidationResult Invalid(string format)
+        //    => InvalidFormat(format);
 
-        public static ValidationResult InvalidFormat(string format)
+        public static ValidationResult InvalidFormat(string info)
         {
-            return new ValidationResult(ValidationStatus.InvalidFormat, format);
+            return new ValidationResult(ValidationStatus.InvalidFormat, info);
         }
 
         public static ValidationResult InvalidDate()
@@ -59,9 +63,19 @@ namespace CountryValidation
             return new ValidationResult(ValidationStatus.InvalidDate);
         }
 
-        public static ValidationResult InvalidLength()
+        public static ValidationResult InvalidLength(string info)
         {
-            return new ValidationResult(ValidationStatus.InvalidLength);
+            return new ValidationResult(ValidationStatus.InvalidLength, info);
+        }
+
+        public static ValidationResult InvalidOther(string info)
+        {
+            return new ValidationResult(ValidationStatus.InvalidOther, info);
+        }
+
+        public static ValidationResult CountryNotSupported(Country country)
+        {
+            return new ValidationResult(ValidationStatus.CountryNotSupported, country.ToString());
         }
         #endregion
     }

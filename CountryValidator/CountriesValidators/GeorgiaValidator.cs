@@ -11,7 +11,7 @@ namespace CountryValidation.Countries
             ssn = ssn.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(ssn, @"^\d{9}$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat(@"^\d{9}$");
             }
             return ValidationResult.Success();
 
@@ -22,7 +22,7 @@ namespace CountryValidation.Countries
             ssn = ssn.RemoveSpecialCharacthers();
             if (!Regex.IsMatch(ssn, @"^(\d{9}|\d{11})$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat(@"^(\d{9}|\d{11})$");
             }
             return ValidationResult.Success();
         }

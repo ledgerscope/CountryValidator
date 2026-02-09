@@ -31,7 +31,7 @@ namespace CountryValidation.Countries
 
             if (ruc.Length != 13)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("13 characters");
             }
             else if (!ruc.All(char.IsDigit))
             {
@@ -39,13 +39,13 @@ namespace CountryValidation.Countries
             }
             else if ((int.Parse(ruc.Substring(0, 2)) < 1 || int.Parse(ruc.Substring(0, 2)) > 24) && !new string[] { "30", "50" }.Contains(ruc.Substring(0, 2)))
             {
-                return ValidationResult.Invalid("Invalid province code");
+                return ValidationResult.InvalidOther("Invalid province code");
             }
             else if (int.Parse(ruc.Substring(2, 1)) < 6) // 0..5 = natural RUC: CI plus establishment number
             {
                 if (ruc.Substring(ruc.Length - 3) == "000")
                 {
-                    return ValidationResult.Invalid("Invalid code");
+                    return ValidationResult.InvalidOther("Missing 000");
                 }
                 return ValidateCI(ruc.Substring(0, 10));
             }
@@ -53,7 +53,7 @@ namespace CountryValidation.Countries
             {
                 if (ruc.Substring(ruc.Length - 4) == "000")
                 {
-                    return ValidationResult.Invalid("Invalid code");
+                    return ValidationResult.InvalidFormat("Missing 000");
                 }
                 else if (Checksum(ruc.Substring(0, 9), new int[] { 3, 2, 7, 6, 5, 4, 3, 2, 1 }) != 0)
                 {
@@ -64,7 +64,7 @@ namespace CountryValidation.Countries
             {
                 if (ruc.Substring(ruc.Length - 3) == "000")
                 {
-                    return ValidationResult.Invalid("Establishment Number Wrong");
+                    return ValidationResult.InvalidOther("Establishment Number Wrong");
                 }
                 if (Checksum(ruc.Substring(0, 10), new int[] { 4, 3, 2, 7, 6, 5, 4, 3, 2, 1 }) != 0)
                 {
@@ -73,7 +73,7 @@ namespace CountryValidation.Countries
             }
             else
             {
-                return ValidationResult.Invalid("Third digit is wrong");
+                return ValidationResult.InvalidOther("Third digit is wrong");
             }
             return ValidationResult.Success();
         }
@@ -125,7 +125,7 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (number.Length != 10)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 characters");
             }
             else if (!number.All(char.IsDigit))
             {
@@ -133,11 +133,11 @@ namespace CountryValidation.Countries
             }
             else if ((int.Parse(number.Substring(0, 2)) < 1 || int.Parse(number.Substring(0, 2)) > 24) && !new string[] { "30", "50" }.Contains(number.Substring(0, 2)))
             {
-                return ValidationResult.Invalid("Invalid province code");
+                return ValidationResult.InvalidOther("Invalid province code");
             }
             else if (Char.GetNumericValue(number[2]) > 5)
             {
-                return ValidationResult.Invalid("Third digit is wrong");
+                return ValidationResult.InvalidOther("Third digit is wrong");
             }
             else if (Checksum(number) != 0)
             {

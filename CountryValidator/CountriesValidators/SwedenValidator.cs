@@ -22,7 +22,7 @@ namespace CountryValidation.Countries
             }
             else if (id.Length != 10)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 digits");
             }
             return id.CheckLuhnDigit() ? ValidationResult.Success() : ValidationResult.InvalidChecksum();
         }
@@ -37,11 +37,11 @@ namespace CountryValidation.Countries
             id = id.RemoveSpecialCharacthers();
             if (!(id.Length == 10 || id.Length == 12))
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 or 12 digits");
             }
             else if (!id.All(char.IsDigit))
             {
-                return ValidationResult.Invalid("Only numbers are allowed");
+                return ValidationResult.InvalidFormat("All digits");
             }
             try
             {

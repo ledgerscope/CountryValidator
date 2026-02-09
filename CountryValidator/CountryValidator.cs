@@ -145,8 +145,7 @@ namespace CountryValidation
             {
                 return _supportedCountries[country].ValidateIndividualTaxCode(ssn);
             }
-            return ValidationResult.Invalid("Not supported");
-
+            return ValidationResult.CountryNotSupported(country);
         }
 
         public ValidationResult ValidateVAT(string vat, Country country)
@@ -155,8 +154,7 @@ namespace CountryValidation
             {
                 return _supportedCountries[country].ValidateVAT(vat);
             }
-            return ValidationResult.Invalid("Not supported");
-
+            return ValidationResult.CountryNotSupported(country);
         }
 
         public ValidationResult ValidateEntity(string vat, Country country)
@@ -165,8 +163,7 @@ namespace CountryValidation
             {
                 return _supportedCountries[country].ValidateEntity(vat);
             }
-            return ValidationResult.Invalid("Not supported");
-
+            return ValidationResult.CountryNotSupported(country);
         }
 
         public ValidationResult ValidateNationalIdentityCode(string ssn, Country country)
@@ -175,8 +172,7 @@ namespace CountryValidation
             {
                 return _supportedCountries[country].ValidateNationalIdentity(ssn);
             }
-            return ValidationResult.Invalid("Not supported");
-
+            return ValidationResult.CountryNotSupported(country);
         }
 
         public ValidationResult ValidateZIPCode(string zip, Country country)
@@ -185,7 +181,7 @@ namespace CountryValidation
             {
                 return _supportedCountries[country].ValidatePostalCode(zip);
             }
-            return ValidationResult.Invalid("Not supported");
+            return ValidationResult.CountryNotSupported(country);
         }
     }
 }

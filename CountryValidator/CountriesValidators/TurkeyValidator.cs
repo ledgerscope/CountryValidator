@@ -32,7 +32,7 @@ namespace CountryValidation.Countries
             }
             else if (kimlik.Length != 11)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 digits");
             }
             else if (CalculatChecksumKimlik(kimlik.Substring(0, kimlik.Length - 2)) != kimlik.Substring(kimlik.Length - 2))
             {
@@ -101,7 +101,7 @@ namespace CountryValidation.Countries
             }
             else if (vatId.Length != 10)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 digits");
             }
             else if (CalculateChecksum(vatId.Substring(0, vatId.Length - 1)) != (int)char.GetNumericValue(vatId[vatId.Length - 1]))
             {

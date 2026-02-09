@@ -24,7 +24,7 @@ namespace CountryValidation.Countries
         {
             if (number.Length != 11)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("11 characters");
             }
             else if (!number.All(char.IsDigit))
             {

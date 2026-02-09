@@ -38,7 +38,7 @@ namespace CountryValidation.Countries
 
             if (!match.Success)
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("It's complicated");
             }
 
             if (match.Groups[2].Value != DigitVerification(match.Groups[1].Value).ToString())
@@ -62,7 +62,7 @@ namespace CountryValidation.Countries
             {
                 if (!Regex.IsMatch(rfc, "^[A-Z&Ñ]{3}[0-9]{6}[0-9A-Z]{3}$"))
                 {
-                    return ValidationResult.Invalid("Invalid format");
+                    return ValidationResult.InvalidFormat("^[A-Z&Ñ]{3}[0-9]{6}[0-9A-Z]{3}$");
                 }
                 else if (!HasValidDate(rfc))
                 {
@@ -71,14 +71,14 @@ namespace CountryValidation.Countries
             }
             else
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("12 characters");
             }
 
             if (rfc.Length >= 12)
             {
                 if (!Regex.IsMatch(rfc.Substring(rfc.Length - 3), @"^[1-9A-V][1-9A-Z][0-9A]$"))
                 {
-                    return ValidationResult.Invalid("Invalid");
+                    return ValidationResult.InvalidFormat(@"^[1-9A-V][1-9A-Z][0-9A]$");
                 }
                 else if (rfc[rfc.Length - 1] != CalculateChecksum(rfc.Substring(0, rfc.Length - 1)))
                 {
@@ -142,11 +142,11 @@ namespace CountryValidation.Countries
             {
                 if (!Regex.IsMatch(rfc, @"^[A-Z&Ñ]{4}[0-9]{6}[0-9A-Z]{0,3}$"))
                 {
-                    return ValidationResult.Invalid("Invalid format");
+                    return ValidationResult.InvalidOther("Not a person");
                 }
                 else if (name_blacklist.Contains(rfc.Substring(0, 4)))
                 {
-                    return ValidationResult.Invalid("Name is blacklisted");
+                    return ValidationResult.InvalidOther("Name is on exclusion list");
                 }
                 else if (!HasValidDate(rfc.Substring(4, 6)))
                 {
@@ -155,14 +155,14 @@ namespace CountryValidation.Countries
             }
             else
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("10 or 13 characters");
             }
 
             if (rfc.Length >= 12)
             {
                 if (!Regex.IsMatch(rfc.Substring(rfc.Length - 3), @"^[1-9A-V][1-9A-Z][0-9A]$"))
                 {
-                    return ValidationResult.Invalid("Invalid");
+                    return ValidationResult.InvalidFormat(@"^[1-9A-V][1-9A-Z][0-9A]$");
                 }
                 else if (rfc[rfc.Length - 1] != CalculateChecksum(rfc.Substring(0, rfc.Length - 1)))
                 {

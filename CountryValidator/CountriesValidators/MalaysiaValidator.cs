@@ -17,7 +17,7 @@ namespace CountryValidation.Countries
 
             if (Regex.IsMatch(id, @"^(CS|D|E|F|FA|PT|TA|TC|TN|TR|TP|TJ|LE)\d{10}$"))
             {
-                return ValidationResult.Invalid("Invalid code!");
+                return ValidationResult.InvalidFormat(@"^(CS|D|E|F|FA|PT|TA|TC|TN|TR|TP|TJ|LE)\d{10}$");
             }
             return ValidationResult.Success();
 
@@ -35,7 +35,7 @@ namespace CountryValidation.Countries
 
             if (Regex.IsMatch(itn, @"^(SG|OG)\d{10}[01]$"))
             {
-                return ValidationResult.Invalid("Invalid code!");
+                return ValidationResult.InvalidFormat(@"^(SG|OG)\d{10}[01]$");
             }
             return ValidationResult.Success();
 

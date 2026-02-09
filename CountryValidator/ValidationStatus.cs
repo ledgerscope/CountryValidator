@@ -8,5 +8,7 @@
         InvalidFormat,
         InvalidDate,
         InvalidLength,
+        InvalidOther,
+        CountryNotSupported,
     }
 }

@@ -40,7 +40,7 @@ namespace CountryValidation.Countries
 
             if (rut.Length != 12)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("12 digits");
             }
             else if (!rut.All(char.IsDigit))
             {
@@ -48,15 +48,15 @@ namespace CountryValidation.Countries
             }
             else if (int.Parse(rut.Substring(0, 2)) < 1 || int.Parse(rut.Substring(0, 2)) > 21)
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidOther("rut is bad");
             }
             else if (rut.Substring(2, 6) == "000000")
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidOther("Unexpected 000000");
             }
             else if (rut.Substring(8, 3) != "001")
             {
-                return ValidationResult.Invalid("Invalid code");
+                return ValidationResult.InvalidOther("Missing 001");
             }
             else if ((int)char.GetNumericValue(rut[rut.Length - 1]) != CalculateChecksum(rut.Substring(0, rut.Length - 1)))
             {

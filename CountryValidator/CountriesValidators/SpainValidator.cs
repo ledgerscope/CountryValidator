@@ -19,22 +19,19 @@ namespace CountryValidation.Countries
         public ValidationResult ValidateSpanishID(string str)
         {
             str = str.RemoveSpecialCharacthers();
-            ValidationResult validationResult = ValidationResult.Invalid("Invalid");
             var type = SpainIdType(str);
 
             switch (type)
             {
                 case "dni":
-                    validationResult = ValidDNI(str);
-                    break;
+                    return ValidDNI(str);
                 case "nie":
-                    validationResult = ValidNIE(str);
-                    break;
+                    return ValidNIE(str);
                 case "cif":
-                    validationResult = ValidCIF(str);
-                    break;
+                    return ValidCIF(str);
+                default:
+                    return ValidationResult.InvalidOther($"Unrecognized type, '{str}'");
             }
-            return validationResult;
         }
 
         private string SpainIdType(string str)
@@ -81,7 +78,7 @@ namespace CountryValidation.Countries
                 case 'Y': nie_prefix_number = 1; break;
                 case 'Z': nie_prefix_number = 2; break;
                 default:
-                    return ValidationResult.Invalid("Invalid");
+                    return ValidationResult.InvalidOther($"Unrecognized nie_prefix: {nie_prefix}");
             }
 
             return ValidDNI(nie_prefix_number + nie.Substring(1));
@@ -202,7 +199,7 @@ namespace CountryValidation.Countries
                     return ValidationResult.InvalidChecksum();
                 }
             }
-            return ValidationResult.Invalid("Invalid");
+            return ValidationResult.InvalidFormat("Not " + @"^[A-H|J|U|V]\d{8}$" + " and not " + @"^[A-H|N-S|W]\d{7}[A-J]$");
         }
 
         public override ValidationResult ValidateVAT(string vatId)
@@ -236,7 +233,7 @@ namespace CountryValidation.Countries
 
             }
 
-            return ValidationResult.Invalid("Invalid");
+            return ValidationResult.InvalidFormat("Not " + @"^[0-9|Y|Z]\d{7}[A-Z]$" + " and not " + @"^[K|L|M|X]\d{7}[A-Z]$");
         }
 
         public override ValidationResult ValidatePostalCode(string postalCode)

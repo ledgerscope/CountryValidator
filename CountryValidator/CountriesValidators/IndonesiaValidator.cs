@@ -25,7 +25,7 @@ namespace CountryValidation.Countries
             }
             else if (!Regex.IsMatch(ssn, @"^\d[0123]"))
             {
-                return ValidationResult.Invalid("Second digit must be between 4-9");
+                return ValidationResult.InvalidFormat("Second digit must be between 4-9");
             }
             else if (!ssn.Substring(0, 10).CheckLuhnDigit())
             {
@@ -60,7 +60,7 @@ namespace CountryValidation.Countries
             }
             else if (!Regex.IsMatch(id, @"^\d[456789]"))
             {
-                return ValidationResult.Invalid("Second digit must be between 4-9");
+                return ValidationResult.InvalidFormat("Second digit must be between 4-9");
             }
             else if (!id.Substring(0, 10).CheckLuhnDigit())
             {

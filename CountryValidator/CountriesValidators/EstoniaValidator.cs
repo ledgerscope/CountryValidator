@@ -20,11 +20,11 @@ namespace CountryValidation.Countries
             }
             else if (id.Length != 8)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("8 digits");
             }
             else if (!(id[0] == '1' || id[0] == '7' || id[0] == '8' || id[0] == '9'))
             {
-                return ValidationResult.Invalid("Invalid format. First digit must be 1 or 7 or 8 or 9");
+                return ValidationResult.InvalidOther("Invalid format. First digit must be 1 or 7 or 8 or 9");
             }
             else if ((int)char.GetNumericValue(id[id.Length - 1]) != CalculateChecksum(id))
             {
@@ -96,7 +96,7 @@ namespace CountryValidation.Countries
             vatId = vatId.Replace("ee", string.Empty).Replace("EE", string.Empty);
             if (!Regex.IsMatch(vatId, @"^10\d{7}$"))
             {
-                return ValidationResult.Invalid("");
+                return ValidationResult.InvalidFormat(@"^10\d{7}$");
             }
 
             int[] Multipliers = { 3, 7, 1, 3, 7, 1, 3, 7 };

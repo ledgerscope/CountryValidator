@@ -18,11 +18,11 @@ namespace CountryValidation.Countries
             }
             else if (number.Length != 13)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("13 digits");
             }
             else if (!(number[10] == '0' || number[10] == '1'))
             {
-                return ValidationResult.Invalid("The eleven digit must be 1 or 0");
+                return ValidationResult.InvalidOther("The eleventh digit must be 1 or 0");
             }
             else if (!HasValidDate(number))
             {

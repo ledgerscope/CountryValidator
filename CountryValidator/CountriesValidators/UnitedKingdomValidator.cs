@@ -30,17 +30,17 @@ namespace CountryValidation.Countries
             {
                 return ValidationResult.Success();
             }
-            return ValidationResult.Invalid("Invalid");
+            return ValidationResult.InvalidOther("Not individual tax code and not NHS code");
         }
 
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
             {
-                return ValidationResult.Invalid("Emtpy nino");
+                return ValidationResult.InvalidFormat("Must not be empty");
             }
             bool isValid = Regex.IsMatch(id, "^(?!BG|GB|NK|KN|TN|NT|ZZ)((?![DFIQUV])([A-Z])(?![DFIQUVO])([A-Z]))[0-9]{6}[A-D ]$");
-            return isValid ? ValidationResult.Success() : ValidationResult.Invalid("Invalid format");
+            return isValid ? ValidationResult.Success() : ValidationResult.InvalidFormat("^(?!BG|GB|NK|KN|TN|NT|ZZ)((?![DFIQUV])([A-Z])(?![DFIQUVO])([A-Z]))[0-9]{6}[A-D ]$");
         }
 
         public ValidationResult ValidateNHS(string ssn)
@@ -85,34 +85,34 @@ namespace CountryValidation.Countries
 
             if (vatId.Length < 4)
             {
-                return ValidationResult.Invalid("Invalid length");
+                return ValidationResult.InvalidLength("Must be at least 4 characters");
             }
 
             if (vatId.Substring(0, 2) == "GD")
             {
                 bool isValidGD = int.Parse(vatId.Substring(2, 3)) < 500;
-                return isValidGD ? ValidationResult.Success() : ValidationResult.Invalid("Invalid");
+                return isValidGD ? ValidationResult.Success() : ValidationResult.InvalidFormat("Bad format for if starts with 'GD'");
             }
             else if (vatId.Substring(0, 2) == "HA")
             {
                 bool isValidHA = int.Parse(vatId.Substring(2, 3)) > 499;
-                return isValidHA ? ValidationResult.Success() : ValidationResult.Invalid("Invalid");
+                return isValidHA ? ValidationResult.Success() : ValidationResult.InvalidFormat("Bad format for if starts with 'HA'");
             }
 
             var total = 0;
             if (vatId[0] == '0')
             {
-                return ValidationResult.Invalid("Invalid format. First digit cannot be 0");
+                return ValidationResult.InvalidFormat("First digit cannot be 0");
             }
 
             if (vatId.Length != 9)
             {
-                return ValidationResult.Invalid("Invalid length");
+                return ValidationResult.InvalidLength("9 characters");
             }
 
             if (Regex.IsMatch(vatId, "[a-zA-Z]"))
             {
-                return ValidationResult.Invalid("Invalid format. Cannot contain letters (apart from GB)");
+                return ValidationResult.InvalidFormat("Cannot contain letters (other than starting 'GB')");
             }
 
             var no = long.Parse(vatId.Substring(0, 7));

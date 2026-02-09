@@ -22,11 +22,11 @@ namespace CountryValidation.Countries
             number = number.RemoveSpecialCharacthers();
             if (number.Length != 14)
             {
-                return ValidationResult.InvalidLength();
+                return ValidationResult.InvalidLength("14 digits");
             }
             else if (!Regex.IsMatch(number, "^[A-Z][0-9]+[0-9A-Z]$"))
             {
-                return ValidationResult.Invalid("Invalid format");
+                return ValidationResult.InvalidFormat("^[A-Z][0-9]+[0-9A-Z]$");
             }
             else if (CalculateChecksum(number.Substring(0, 13)) != number[number.Length - 1])
             {

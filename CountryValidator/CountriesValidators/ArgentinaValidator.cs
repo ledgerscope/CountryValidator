@@ -86,7 +86,7 @@ namespace CountryValidation.Countries
                 {
                     return ValidationResult.Success();
                 }
-                return ValidationResult.Invalid("Invalid");
+                return ValidationResult.InvalidFormat("8 digits, in range 10000000 to 99999999");
             }
         }
 
