@@ -3,7 +3,8 @@
     public abstract class IdValidationAbstract
     {
 
-        public static string CountryCode { get; protected set; }
+        public string CountryCode { get; protected set; }
+
         public virtual ValidationResult ValidateNationalIdentity(string ssn)
         {
             return ValidateIndividualTaxCode(ssn);
