@@ -1,44 +1,68 @@
-﻿namespace CountryValidation
+﻿using System;
+
+namespace CountryValidation
 {
     public sealed record ValidationResult
     {
+        public ValidationStatus Validity { get; }
 
-        public bool IsValid { get; }
+        public bool IsValid => Validity == ValidationStatus.Valid;
 
         public string ErrorMessage { get; }
 
-        public ValidationResult(bool isValid, string errorMessage)
+        public ValidationResult(ValidationStatus validity, string? format = null)
         {
-            IsValid = isValid;
-            ErrorMessage = errorMessage;
+            Validity = validity;
+            ErrorMessage = getErrorMessage(validity, format);
         }
 
+        private string getErrorMessage(ValidationStatus validity, string? format)
+        {
+            switch(validity)
+            {
+                case ValidationStatus.Valid:
+                    return string.Empty;
+                case ValidationStatus.InvalidChecksum:
+                    return "Invalid checksum.";
+                case ValidationStatus.InvalidFormat:
+                    return format ?? string.Empty;
+                case ValidationStatus.InvalidDate:
+                    return "Invalid date";
+                case ValidationStatus.InvalidLength:
+                    return "Invalid length";
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(validity), validity, null);
+            }
+        }
+
+        #region Factory Methods
         public static ValidationResult Success()
         {
-            return new ValidationResult(true, string.Empty);
-        }
-
-        public static ValidationResult Invalid(string errorMessage)
-        {
-            return new ValidationResult(false, errorMessage);
+            return new ValidationResult(ValidationStatus.Valid);
         }
 
         public static ValidationResult InvalidChecksum()
         {
-            return new ValidationResult(false, "Invalid checksum.");
+            return new ValidationResult(ValidationStatus.InvalidChecksum);
         }
+
+        public static ValidationResult Invalid(string format)
+            => InvalidFormat(format);
+
         public static ValidationResult InvalidFormat(string format)
         {
-            return new ValidationResult(false, $"Invalid format. The code must have this format {format}");
+            return new ValidationResult(ValidationStatus.InvalidFormat, format);
         }
+
         public static ValidationResult InvalidDate()
         {
-            return new ValidationResult(false, "Invalid date");
+            return new ValidationResult(ValidationStatus.InvalidDate);
         }
 
         public static ValidationResult InvalidLength()
         {
-            return new ValidationResult(false, "Invalid length");
+            return new ValidationResult(ValidationStatus.InvalidLength);
         }
+        #endregion
     }
 }
