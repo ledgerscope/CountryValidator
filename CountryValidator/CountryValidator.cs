@@ -82,6 +82,7 @@ namespace CountryValidation
             return dict;
         }
 
+        /*
         private static Dictionary<Country, IdValidationAbstract> Load_brittle ()
         {
             Dictionary<Country, IdValidationAbstract> ssnCountries = new Dictionary<Country, IdValidationAbstract>
@@ -177,6 +178,7 @@ namespace CountryValidation
 
             return ssnCountries;
         }
+        */
 
         public ValidationResult ValidateIndividualTaxCode(string ssn, string countryCode)
         {
