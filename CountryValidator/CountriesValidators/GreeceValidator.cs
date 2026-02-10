@@ -60,7 +60,15 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters().ToUpper().Replace("EL", string.Empty).Replace("GR", string.Empty);
+            vatId = vatId.RemoveSpecialCharacters().ToUpper();
+            if (vatId.StartsWith("EL"))
+            {
+                vatId = vatId.Substring(2);
+            }
+            else if (vatId.StartsWith("GR"))
+            {
+                vatId = vatId.Substring(2);
+            }
 
             if (vatId.Length == 8)
             {
