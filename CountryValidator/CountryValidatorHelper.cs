@@ -11,10 +11,10 @@ namespace CountryValidation
 		private static readonly CountryValidator _instance = new CountryValidator();
 
 		public static bool IsCountrySupported(Country country)
-			=> CountryValidator.IsCountrySupported(country);
+			=> _instance.IsCountrySupported(country);
 
 		public static List<string> SupportedCountries
-			=> CountryValidator.SupportedCountries;
+			=> _instance.SupportedCountries;
 
 		public static ValidationResult ValidateIndividualTaxCode(string ssn, string countryCode)
 			=> _instance.ValidateIndividualTaxCode(ssn, countryCode);

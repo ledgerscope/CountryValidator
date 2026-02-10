@@ -16,10 +16,10 @@ namespace CountryValidation.DataAnnotations
             {
                 throw new ArgumentNullException(nameof(countryCode));
             }
-            else if (!CountryValidator.IsCountrySupported(CountryCode))
-            {
-                throw new NotSupportedException("This country is not supported");
-            }
+            //else if (!CountryValidator.IsCountrySupported(CountryCode))
+            //{
+            //    throw new NotSupportedException("This country is not supported");
+            //}
 
             CountryCode = countryCode;
         }
