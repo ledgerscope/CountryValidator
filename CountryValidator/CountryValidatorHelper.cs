@@ -12,6 +12,8 @@ namespace CountryValidation
 
 		public static bool IsCountrySupported(Country country)
 			=> _instance.IsCountrySupported(country);
+		public static bool IsCountrySupported(string countryCode)
+			=> _instance.IsCountrySupported(countryCode);
 
 		public static List<string> SupportedCountries
 			=> _instance.SupportedCountries;
