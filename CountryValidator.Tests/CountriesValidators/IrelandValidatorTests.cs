@@ -45,13 +45,14 @@ namespace CountryValidation.Tests
         }
 
         [Theory]
-        [InlineData("6433435F", true)]
-        [InlineData("6433435OA", true)]
-        [InlineData("8D79739I", true)]
-        [InlineData("8D79738J", false)]
-        public void TestCorrectVatCode(string code, bool isValid)
+        [InlineData("6433435F", ValidationStatus.Valid)]
+        [InlineData("6433435OA", ValidationStatus.Valid)]
+        [InlineData("8D79739I", ValidationStatus.Valid)]
+        [InlineData("8D79738J", ValidationStatus.InvalidChecksum)]
+        [InlineData("4749148U", ValidationStatus.Valid)]
+        public void TestCorrectVatCode(string code, ValidationStatus expectedStatus)
         {
-            Assert.Equal(isValid, _irelandValidator.ValidateVAT(code).IsValid);
+            Assert.Equal(expectedStatus, _irelandValidator.ValidateVAT(code).Validity);
         }
 
         [Theory]
