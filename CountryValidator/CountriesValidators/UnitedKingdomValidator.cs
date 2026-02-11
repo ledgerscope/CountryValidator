@@ -78,7 +78,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId?.RemoveSpecialCharacters() ?? string.Empty;
+            vatId = GetVatNumberRegularized(vatId);
 
             if (vatId.StartsWith("GB", StringComparison.OrdinalIgnoreCase))
                 vatId = vatId.Substring(2);

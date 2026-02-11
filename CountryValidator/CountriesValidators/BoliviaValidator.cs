@@ -44,6 +44,8 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
+            // Not official to start with 'BO', but handle it if it does.
+            vatId = GetVatNumberRegularized(vatId);
             return ValidateEntity(vatId);
         }
 

@@ -49,8 +49,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string coe)
         {
-            coe = coe.RemoveSpecialCharacters();
-            coe = coe.Replace("SM", string.Empty).Replace("sm", string.Empty);
+            coe = GetVatNumberRegularized(coe);
 
             if (coe.Length > 5 || coe.Length == 0)
             {

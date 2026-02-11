@@ -59,6 +59,8 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vat)
         {
+            vat = GetVatNumberRegularized(vat);
+
             if (!Regex.IsMatch(vat, @"^(\d{9}|\d{12})$"))
             {
                 return ValidationResult.InvalidFormat("123456789 or 123456789012");

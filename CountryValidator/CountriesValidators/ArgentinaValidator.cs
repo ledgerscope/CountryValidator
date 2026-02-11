@@ -39,6 +39,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
+            vatId = GetVatNumberRegularized(vatId);
             return ValidateCuit(vatId);
         }
 
@@ -46,7 +47,6 @@ namespace CountryValidation.Countries
 
         private ValidationResult ValidateCuit(string cuit)
         {
-
             cuit = cuit.RemoveSpecialCharacters();
 
             if (!Regex.IsMatch(cuit, @"^\d{11}$"))

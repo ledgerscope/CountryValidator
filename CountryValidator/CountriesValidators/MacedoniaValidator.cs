@@ -86,8 +86,8 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters();
-            vatId = vatId.Replace("MK", string.Empty).Replace("mk", string.Empty);
+            vatId = GetVatNumberRegularized(vatId);
+
             if (!Regex.IsMatch(vatId, @"^\d{13}$"))
             {
                 return ValidationResult.InvalidFormat("MK1234567890123");

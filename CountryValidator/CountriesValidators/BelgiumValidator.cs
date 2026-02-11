@@ -55,8 +55,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string id)
         {
-            id = id.RemoveSpecialCharacters();
-            id = id.Replace("be", string.Empty).Replace("BE", string.Empty);
+            id = GetVatNumberRegularized(id);
 
             if (id.Length == 9)
             {

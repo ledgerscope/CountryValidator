@@ -87,8 +87,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vat)
         {
-            vat = vat.RemoveSpecialCharacters();
-            vat = vat.Replace("IT", string.Empty).Replace("it", string.Empty);
+            vat = GetVatNumberRegularized(vat);
 
             if (!Regex.IsMatch(vat, @"^\d{11}$"))
             {

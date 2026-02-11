@@ -16,7 +16,6 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateEntity(string id)
         {
             return ValidateVAT(id);
-
         }
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace CountryValidation.Countries
                 throw new ArgumentNullException(nameof(vatId));
             }
 
-            vatId = vatId.RemoveSpecialCharacters().ToUpper().Replace("HR", string.Empty);
+            vatId = GetVatNumberRegularized(vatId);
             if (!Regex.IsMatch(vatId, @"^\d{11}$"))
             {
                 return ValidationResult.InvalidFormat("12345678901");

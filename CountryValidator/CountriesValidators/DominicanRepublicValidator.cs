@@ -135,8 +135,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string rnc)
         {
-
-            rnc = rnc.RemoveSpecialCharacters();
+            rnc = GetVatNumberRegularized(rnc);
             if (!rnc.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("123456789");

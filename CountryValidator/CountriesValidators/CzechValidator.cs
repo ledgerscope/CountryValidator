@@ -127,8 +127,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters();
-            vatId = vatId.Replace("cz", string.Empty).Replace("CZ", string.Empty);
+            vatId = GetVatNumberRegularized(vatId);
 
             int total = 0;
             var multipliers = new int[] { 8, 7, 6, 5, 4, 3, 2 };

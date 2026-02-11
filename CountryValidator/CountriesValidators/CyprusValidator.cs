@@ -70,8 +70,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters();
-            vatId = vatId.Replace("CY", string.Empty).Replace("cy", string.Empty);
+            vatId = GetVatNumberRegularized(vatId);
 
             if (!Regex.IsMatch(vatId, @"^([0-59]\d{7}[A-Z])$"))
             {

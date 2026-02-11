@@ -92,8 +92,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId?.RemoveSpecialCharacters().ToUpper().Replace("TR", string.Empty) ?? string.Empty;
-
+            vatId = GetVatNumberRegularized(vatId);
 
             if (!vatId.All(char.IsDigit))
             {

@@ -17,7 +17,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateEntity(string number)
         {
-            number = number.RemoveSpecialCharacters().ToUpper().Replace("FR", string.Empty);
+            number = GetVatNumberRegularized(number);
             if (!number.All(char.IsDigit))
             {
                 return ValidationResult.InvalidFormat("123456789");

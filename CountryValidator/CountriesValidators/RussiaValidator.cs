@@ -81,8 +81,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters();
-            vatId = vatId?.Replace("RU", string.Empty).Replace("ru", string.Empty) ?? string.Empty;
+            vatId = GetVatNumberRegularized(vatId);
             return ValidateIndividualTaxCode(vatId);
         }
 

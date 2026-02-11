@@ -95,6 +95,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string ruc)
         {
+            ruc = GetVatNumberRegularized(ruc);
             return ValidateEntity(ruc);
         }
 

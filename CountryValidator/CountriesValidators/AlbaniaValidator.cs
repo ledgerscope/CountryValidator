@@ -55,8 +55,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string nipt)
         {
-            nipt = nipt.RemoveSpecialCharacters();
-            nipt = nipt.Replace("AL", string.Empty).Replace("al", string.Empty);
+            nipt = GetVatNumberRegularized(nipt);
 
             if (nipt.Length != 10)
             {

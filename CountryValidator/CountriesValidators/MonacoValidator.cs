@@ -20,8 +20,7 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateVAT(string number)
         {
             number = number.RemoveSpecialCharacters();
-            number = number.Replace("FR", string.Empty).Replace("fr", string.Empty).Replace("mc", string.Empty).Replace("MC", string.Empty);
-
+            number = RemoveStringFromStart(number, "MC", "FR");
 
             if (number.Substring(2, 3) != "000")
             {

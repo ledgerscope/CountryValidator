@@ -37,7 +37,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number.RemoveSpecialCharacters();
+            number = GetVatNumberRegularized(number);
             if (number.Length > 9 || number.Length < 6)
             {
                 return ValidationResult.InvalidLength("6 to 9 digits");

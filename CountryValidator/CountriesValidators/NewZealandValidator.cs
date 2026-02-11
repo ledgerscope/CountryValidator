@@ -80,6 +80,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string number)
         {
+            number = GetVatNumberRegularized(number);
             return ValidateEntity(number);
         }
 

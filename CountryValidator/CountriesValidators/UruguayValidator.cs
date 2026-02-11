@@ -35,8 +35,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string rut)
         {
-            rut = rut.RemoveSpecialCharacters();
-            rut = rut.Replace("UY", string.Empty).Replace("uy", string.Empty);
+            rut = GetVatNumberRegularized(rut);
 
             if (rut.Length != 12)
             {

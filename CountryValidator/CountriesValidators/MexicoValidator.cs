@@ -174,6 +174,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
+            vatId = GetVatNumberRegularized(vatId);
             return ValidateEntity(vatId);
         }
 

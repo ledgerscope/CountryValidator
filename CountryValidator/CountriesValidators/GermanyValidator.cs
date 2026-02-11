@@ -148,8 +148,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters();
-            vatId = vatId.Replace("DE", string.Empty).Replace("de", string.Empty);
+            vatId = GetVatNumberRegularized(vatId);
             if (!Regex.IsMatch(vatId, @"^[1-9]\d{8}$"))
             {
                 return ValidationResult.InvalidFormat("123456789");

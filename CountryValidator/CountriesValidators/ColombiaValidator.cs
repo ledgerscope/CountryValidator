@@ -33,8 +33,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number.RemoveSpecialCharacters();
-            number = number.Replace("CO", string.Empty).Replace("co", string.Empty);
+            number = GetVatNumberRegularized(number);
             if (!(8 <= number.Length && number.Length <= 16))
             {
                 return ValidationResult.InvalidChecksum();

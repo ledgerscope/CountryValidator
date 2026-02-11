@@ -57,8 +57,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters();
-            vatId = vatId.Replace("is", string.Empty).Replace("IS", string.Empty);
+            vatId = GetVatNumberRegularized(vatId);
 
             if (Regex.IsMatch(vatId, @"^[0-9]{5,6}$"))
             {

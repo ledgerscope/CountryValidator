@@ -93,9 +93,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string value)
         {
-            value = value.RemoveSpecialCharacters();
-            value = value.Replace("CH", string.Empty).Replace("ch", string.Empty);
-            value = value.RemoveSpecialCharacters();
+            value = GetVatNumberRegularized(value);
 
             if (!Regex.IsMatch(value, "^E?[0-9]{9}(MWST|IVA|TVA)?$"))
             {

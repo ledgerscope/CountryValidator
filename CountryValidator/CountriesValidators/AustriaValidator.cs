@@ -10,7 +10,6 @@ namespace CountryValidation.Countries
     {
         public override Country CountryCode => Country.AT;
 
-
         private int CalculateChecksum(string number)
         {
             int[] weights = new int[] { 3, 7, 9, 0, 5, 8, 4, 2, 1, 6 };
@@ -56,7 +55,7 @@ namespace CountryValidation.Countries
         {
             id = id.RemoveSpecialCharacters().Replace("FN", string.Empty).Replace("fn", string.Empty);
 
-			const string regexPattern = @"^[0-9]+[a-zA-Z]$";
+            const string regexPattern = @"^[0-9]+[a-zA-Z]$";
             if (!Regex.IsMatch(id, regexPattern))
             {
                 return ValidationResult.InvalidFormat(regexPattern);
@@ -113,8 +112,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters();
-            vatId = vatId.Replace("AT", string.Empty).Replace("at", string.Empty);
+            vatId = GetVatNumberRegularized(vatId);
 
             if (!Regex.IsMatch(vatId, @"^U\d{8}$"))
             {

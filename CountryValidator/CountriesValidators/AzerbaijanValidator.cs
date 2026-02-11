@@ -56,6 +56,8 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
+            // Officially, starting with 'AN' is not a thing, but it could happen.
+            vatId = GetVatNumberRegularized(vatId);
             return ValidateEntity(vatId);
         }
 

@@ -26,7 +26,8 @@ namespace CountryValidation.Countries
         /// https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Andorra-TIN.pdf
         public override ValidationResult ValidateIndividualTaxCode(string id)
         {
-            id = id.RemoveSpecialCharacters().Replace("AD", string.Empty).Replace("ad", string.Empty);
+            // Actually, the NRT shouldn't start with AD, but we will allow it in case someone enters the country code together with the tax number
+            id = GetVatNumberRegularized(id);
 
             if (id.Length != 8)
             {

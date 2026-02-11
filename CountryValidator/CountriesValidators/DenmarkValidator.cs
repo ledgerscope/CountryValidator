@@ -67,7 +67,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
-            vatId = vatId.RemoveSpecialCharacters().ToUpper().Replace("DK", string.Empty);
+            vatId = GetVatNumberRegularized(vatId);
 
             if (vatId.Length != 8)
             {

@@ -108,6 +108,8 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string vatId)
         {
+            // Starting with the country code is not official, but could happen.
+            vatId = GetVatNumberRegularized(vatId);
             return ValidateEntity(vatId);
         }
 

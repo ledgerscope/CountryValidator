@@ -49,7 +49,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number?.Replace("УНП", string.Empty).Replace("UNP", string.Empty) ?? string.Empty;
+            number = RemoveStringFromStart(number, "УНП", "UNP");
             number = number.Translit();
             number = number.RemoveSpecialCharacters();
             if (!Regex.IsMatch(number, "^[AaBbCcEeHhKkMmOoPpTt]{2}"))

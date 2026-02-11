@@ -39,8 +39,7 @@ namespace CountryValidation.Countries
         /// <returns></returns>
         public override ValidationResult ValidateVAT(string number)
         {
-            number = number.RemoveSpecialCharacters();
-            number = number.Replace("CL", string.Empty).Replace("cl", string.Empty);
+            number = GetVatNumberRegularized(number);
 
             if (!(number.Length == 8 || number.Length == 9))
             {

@@ -86,6 +86,7 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
+            vatId = GetVatNumberRegularized(vatId);
             int[] multipliers = { 8, 7, 6, 5, 4, 3, 2 };
             if (!Regex.IsMatch(vatId, @"^(\d{7}[A-W])|([7-9][A-Z\*\+)]\d{5}[A-W])|(\d{7}[A-W][AH])$"))
             {
