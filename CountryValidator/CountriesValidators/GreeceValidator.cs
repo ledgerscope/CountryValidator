@@ -72,6 +72,11 @@ namespace CountryValidation.Countries
             //    vatId = "0" + vatId;
             //}
 
+            if (vatId.StartsWith("GR", StringComparison.OrdinalIgnoreCase))
+            {
+                return ValidationResult.InvalidFormat("Greek VAT numbers should start with 'EL', not 'GR'.");
+            }
+
             if (vatId.Length != 9) 
             {
                 return ValidationResult.InvalidLength("9 digits"); 
