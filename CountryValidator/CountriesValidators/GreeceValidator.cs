@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CountryValidation.Extensions;
+using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -63,15 +64,24 @@ namespace CountryValidation.Countries
             vatId = vatId.RemoveSpecialCharacters().ToUpper();
             vatId = RemoveStringFromStart(vatId, "EL");
 
-            if (vatId.Length == 8)
+            // Historically, Greek VAT numbers were 8 digits long. Since January 1, 1999,
+            // these have been converted to 9 digits by adding a '0' (zero) at the beginning.
+            // If you have got one of these, it is more than 27 years old and we now say it is wrong.
+            //if (vatId.Length == 8)
+            //{
+            //    vatId = "0" + vatId;
+            //}
+
+            if (vatId.Length != 9) 
             {
-                vatId = "0" + vatId;
+                return ValidationResult.InvalidLength("9 digits"); 
             }
 
-            if (!Regex.IsMatch(vatId, @"^\d{9}$"))
+            if (!vatId.IsAllDigits()) 
             {
-                return ValidationResult.InvalidFormat("123456789");
+                return ValidationResult.InvalidFormat("Must be all digits"); 
             }
+
             int[] multipliers = { 256, 128, 64, 32, 16, 8, 4, 2 };
 
             var sum = vatId.Sum(multipliers);
