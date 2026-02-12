@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CountryValidation.Extensions;
+using System;
 using System.Text.RegularExpressions;
 
 namespace CountryValidation.Countries
@@ -42,7 +43,24 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            throw new NotSupportedException($"{this.CountryCode} validator does not support VAT validation.");
+            string regularized = GetVatNumberRegularized(vatId);
+            if (regularized.Length == 15)
+            {
+                if (regularized.IsAllDigits())
+                {
+                    // We know that the last three digits are some sort of checksum, but the UAE do not
+                    // publish the algorithm, so we cannot validate it beyond checking that it is 15 digits.
+                    return ValidationResult.Success();
+                }
+                else
+                {
+                    return ValidationResult.InvalidFormat("Must be all digits");
+                }
+            }
+            else
+            {
+                return ValidationResult.InvalidLength("15 digits");
+            }
         }
     }
 }
