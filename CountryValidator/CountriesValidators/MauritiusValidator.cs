@@ -81,7 +81,7 @@ namespace CountryValidation.Countries
         }
         public override ValidationResult ValidateVAT(string vatId)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException($"{this.CountryCode} validator does not implement VAT validation.");
         }
 
         public override ValidationResult ValidatePostalCode(string postalCode)
