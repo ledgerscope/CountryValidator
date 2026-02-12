@@ -87,18 +87,33 @@ namespace CountryValidation.Countries
         public override ValidationResult ValidateVAT(string vatId)
         {
             vatId = GetVatNumberRegularized(vatId);
-            int[] multipliers = { 8, 7, 6, 5, 4, 3, 2 };
-            if (!Regex.IsMatch(vatId, @"^(\d{7}[A-W])|([7-9][A-Z\*\+)]\d{5}[A-W])|(\d{7}[A-W][AH])$"))
-            {
-                return ValidationResult.InvalidFormat("Invalid format");
+
+            const string patternOldStyle = @"\d{7}[A-W]"; // 8 chars
+            const string patternNewStyle = @"[7-9][A-Z\*\+]\d{5}[A-W]"; // 8 chars
+            const string patternTwoLetterSuffix = @"\d{7}[A-W][AH]"; // 9 chars
+            string fullPattern = $@"^({patternOldStyle}|{patternNewStyle}|{patternTwoLetterSuffix})$";
+
+            if (vatId.Length < 8 || vatId.Length > 9) 
+            { 
+                return ValidationResult.InvalidLength("8 or 9 characters"); 
             }
 
+            if (!Regex.IsMatch(vatId, fullPattern)) 
+            {
+                return ValidationResult.InvalidFormat($"Invalid format for {this.CountryCode} VAT code."); 
+            }
+
+            // If Irish VAT numbers is in the newer layout, rewrite it into the internal normalized form
+            // needed for the multiplier/checksum algorithm to work consistently.
             if (Regex.IsMatch(vatId, @"^\d[A-Z\*\+]"))
             {
-                vatId = "0" + vatId.Substring(2, 5)
-                          + vatId.Substring(0, 1)
-                          + vatId.Substring(7, 1);
+                vatId = "0"
+                    + vatId.Substring(2, 5)
+                    + vatId.Substring(0, 1)
+                    + vatId.Substring(7, 1);
             }
+
+            int[] multipliers = { 8, 7, 6, 5, 4, 3, 2 };
 
             var sum = vatId.Sum(multipliers);
 
