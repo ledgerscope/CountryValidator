@@ -84,12 +84,21 @@ namespace CountryValidation.Countries
         /// <summary>
         /// Validate Business Number
         /// </summary>
-        /// <param name="bn"></param>
+        /// <param name="vatCode"></param>
         /// <returns></returns>
-        public override ValidationResult ValidateVAT(string bn)
+        public override ValidationResult ValidateVAT(string vatCode)
         {
-            bn = GetVatNumberRegularized(bn);
-            return ValidateEntity(bn);
+            vatCode = GetVatNumberRegularized(vatCode);
+            if (Regex.IsMatch(vatCode, @"^\d{9}RT$")
+                || Regex.IsMatch(vatCode, @"^\d{9}RT\d{4}$")	
+            )
+            {
+                return ValidationResult.Success();
+            }
+            else
+            {
+                return ValidationResult.InvalidFormat("123456789RT or 123456789RT1234");
+            }
         }
 
         public override ValidationResult ValidatePostalCode(string postalCode)
