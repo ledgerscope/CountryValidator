@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CountryValidation.Extensions;
+using System;
 using System.Text.RegularExpressions;
 
 namespace CountryValidation.Countries
@@ -92,7 +93,18 @@ namespace CountryValidation.Countries
 
         public override ValidationResult ValidateVAT(string vatId)
         {
-            throw new NotSupportedException($"{this.CountryCode} validator does not support VAT validation.");
+            string regularized = GetVatNumberRegularized(vatId);
+            if (regularized.Length == 12 || regularized.Length == 13)
+            {
+                if (regularized.IsAllDigits())
+                    return ValidationResult.Success();
+                else
+                    return ValidationResult.InvalidFormat("Must be all digits");
+            }
+            else
+            {
+                return ValidationResult.InvalidLength("12 or 13 digits");
+            }
         }
 
         public override ValidationResult ValidatePostalCode(string postalCode)
