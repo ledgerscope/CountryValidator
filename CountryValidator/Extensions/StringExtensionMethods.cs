@@ -2,9 +2,9 @@
 
 namespace CountryValidation.Extensions
 {
-	public static class StringExtensionMethods
+	internal static class StringExtensionMethods
 	{
-		public static bool IsAllDigits(this string txt)
+		internal static bool IsAllDigits(this string txt)
 			=> txt.All(char.IsDigit);
 	}
 }
